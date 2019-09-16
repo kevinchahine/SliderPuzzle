@@ -5,11 +5,11 @@
 #include <vector>
 
 template<typename T>
-class Matrix : protected std::vector<T>
+class Matrix : public std::vector<T>
 {
 public:
 	Matrix();
-	Matrix(size_t nRows, size_t nCols, const T & initializer = T());
+	Matrix(size_t nRows, size_t nCols, const T & initializer);
 	Matrix(size_t nRows, size_t nCols, const T && initializer = T());
 	Matrix(const Matrix & matrix);
 	Matrix(const Matrix && matrix);
@@ -18,10 +18,10 @@ public:
 	T & at(size_t row, size_t col);
 	const T & at(size_t row, size_t col) const;
 
-	void getNRows() const;
-	void getNCols() const;
+	size_t getNRows() const;
+	size_t getNCols() const;
 
-	void print(std::ostream & os) const;
+	void print(std::ostream & os = std::cout) const;
 
 protected:
 	size_t map(size_t row, size_t col) const;
@@ -55,7 +55,7 @@ Matrix<T>::Matrix(size_t nRows, size_t nCols, const T && initializer) :
 
 template<typename T>
 Matrix<T>::Matrix(const Matrix & matrix) :
-	std::vector<T>(std::copy(matrix)),
+	std::vector<T>(matrix),
 	nRows(matrix.nRows),
 	nCols(matrix.nCols) {}
 
@@ -91,8 +91,9 @@ T & Matrix<T>::at(size_t row, size_t col)
 #endif
 		return(*this)[0];
 	}
+	T temp = static_cast<std::vector<T>>(*this).at(map(row, col));
 
-	return at(map(row, col));
+	return std::vector<T>::at(map(row, col));
 }
 
 template<typename T>
@@ -117,17 +118,17 @@ const T & Matrix<T>::at(size_t row, size_t col) const
 		return(*this)[0];
 	}
 
-	return at(map(row, col));
+	return std::vector<T>::at(map(row, col));
 }
 
 template<typename T>
-inline void Matrix<T>::getNRows() const
+inline size_t Matrix<T>::getNRows() const
 {
 	return this->nRows;
 }
 
 template<typename T>
-inline void Matrix<T>::getNCols() const
+inline size_t Matrix<T>::getNCols() const
 {
 	return this->nCols;
 }
