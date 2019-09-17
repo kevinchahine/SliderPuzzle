@@ -33,6 +33,6 @@ int MatrixDriver::test()
 	cout << "move\n";
 	Matrix<uint16_t> move(Matrix<uint16_t>(2, 2, initializer));
 	move.print();
-
+	
 	return 0;
 }

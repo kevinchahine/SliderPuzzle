@@ -24,9 +24,10 @@ public:
 	void print(std::ostream & os = std::cout) const;
 
 protected:
+public://remove
 	size_t map(size_t row, size_t col) const;
-	size_t colCoord(size_t index) const;
-	size_t rowCoord(size_t index) const;
+	//size_t colCoord(size_t index) const;
+	//size_t rowCoord(size_t index) const;
 
 protected:
 	size_t nRows;
