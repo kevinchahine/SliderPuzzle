@@ -123,13 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
+    <ClCompile Include="SliderBoard.cpp" />
+    <ClCompile Include="SliderBoardDriver.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixDriver.h" />
+    <ClInclude Include="SliderBoard.h" />
+    <ClInclude Include="SliderBoardDriver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

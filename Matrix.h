@@ -20,11 +20,11 @@ public:
 
 	size_t getNRows() const;
 	size_t getNCols() const;
+	size_t getNElements() const;
 
 	void print(std::ostream & os = std::cout) const;
 
 protected:
-public://remove
 	size_t map(size_t row, size_t col) const;
 	//size_t colCoord(size_t index) const;
 	//size_t rowCoord(size_t index) const;
@@ -135,6 +135,12 @@ inline size_t Matrix<T>::getNCols() const
 }
 
 template<typename T>
+inline size_t Matrix<T>::getNElements() const
+{
+	return this->size();
+}
+
+template<typename T>
 void Matrix<T>::print(std::ostream & os) const
 {
 	for (size_t r = 0; r < nRows; r++) {
@@ -150,18 +156,6 @@ template<typename T>
 inline size_t Matrix<T>::map(size_t row, size_t col) const
 {
 	return col + row * nCols;
-}
-
-template<typename T>
-inline size_t Matrix<T>::colCoord(size_t index) const
-{
-	return index % nCols;
-}
-
-template<typename T>
-inline size_t Matrix<T>::rowCoord(size_t index) const
-{
-	return index % nRows;
 }
 
 
