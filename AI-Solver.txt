@@ -1,0 +1,24 @@
+See: https://visualstudiomagazine.com/Articles/2015/10/30/Sliding-Tiles-C-Sharp-AI.aspx?Page=3
+
+Heuristic 1: Misplaced Types
+	counts the number of tiles that are out of place
+
+Heuristic 2: Manhattan Distance
+	sums the distances of each tile from its goal location
+	as a measure of their absolute difference of their
+	cooresponding coorinates
+
+	Manhattan Distance of One Tile = | x1 - x2 | + | y1 - y2 |
+
+Heuristic 3: Linear Conflict
+	The Linear Conflict heuristic provides information on necessary 
+	moves that are not counted in by the Manhattan Distance. Two 
+	tiles tj and tk are said to be in a linear conflict if tj and 
+	tk are in the same line, the goal positions of tj and tk are 
+	both in that line, tj is to the right of tk and goal position 
+	of tj is to the left of the goal position of tk.
+
+Heuristic 4: Pattern Database (Probably the fastest method)
+	Create a database of states and their distance to the goal.
+
+

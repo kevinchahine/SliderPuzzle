@@ -15,7 +15,7 @@ public:
 	SliderSolver();
 	~SliderSolver();
 
-	FastSlideSequence solve(const SliderBoard & board) = 0;
+	virtual FastSlideSequence solve(const SliderBoard & board) = 0;
 
 protected:
 
