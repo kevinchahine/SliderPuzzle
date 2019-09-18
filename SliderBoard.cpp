@@ -5,12 +5,12 @@
 using namespace std;
 
 SliderBoard::SliderBoard() :
-	Matrix<uint16_t>(4, 4),
+	Matrix<uint16_t>(3, 3),
 	spaceCoordinate(0, 0)
 {
 	for (size_t i = 0; i < this->getNElements(); i++)
 	{
-		this->std::vector<uint16_t>::at(i) = i;
+		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
 	}
 }
 
@@ -20,18 +20,13 @@ SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
 {
 	for (size_t i = 0; i < this->getNElements(); i++) 
 	{
-		this->std::vector<uint16_t>::at(i) = i;
+		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
 	}
 }
 
 SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
 	Matrix<uint16_t>(static_cast<Matrix<uint16_t>>(sliderBoard)),
 	spaceCoordinate(sliderBoard.spaceCoordinate) 
-{}
-
-SliderBoard::SliderBoard(const SliderBoard && sliderBoard) :
-	Matrix<uint16_t>(static_cast<Matrix<uint16_t>>(sliderBoard)),
-	spaceCoordinate(sliderBoard.spaceCoordinate)
 {}
 
 SliderBoard::~SliderBoard() {}
@@ -106,8 +101,8 @@ bool SliderBoard::slideRightSafe()
 
 void SliderBoard::slideUpFast()
 {
-	uint16_t col = spaceCoordinate.col();
-	uint16_t row = spaceCoordinate.row();
+	size_t col = spaceCoordinate.col();
+	size_t row = spaceCoordinate.row();
 	uint16_t & a = at(row, col);
 	uint16_t & b = at(row - 1, col);
 
@@ -120,8 +115,8 @@ void SliderBoard::slideUpFast()
 
 void SliderBoard::slideDownFast()
 {
-	uint16_t col = spaceCoordinate.col();
-	uint16_t row = spaceCoordinate.row();
+	size_t col = spaceCoordinate.col();
+	size_t row = spaceCoordinate.row();
 	uint16_t & a = at(row, col);
 	uint16_t & b = at(row + 1, col);
 
@@ -132,8 +127,8 @@ void SliderBoard::slideDownFast()
 
 void SliderBoard::slideLeftFast()
 {
-	uint16_t col = spaceCoordinate.col();
-	uint16_t row = spaceCoordinate.row();
+	size_t col = spaceCoordinate.col();
+	size_t row = spaceCoordinate.row();
 	uint16_t & a = at(row, col);
 	uint16_t & b = at(row, col - 1);
 
@@ -146,8 +141,8 @@ void SliderBoard::slideLeftFast()
 
 void SliderBoard::slideRightFast()
 {
-	uint16_t col = spaceCoordinate.col();
-	uint16_t row = spaceCoordinate.row();
+	size_t col = spaceCoordinate.col();
+	size_t row = spaceCoordinate.row();
 	uint16_t & a = at(row, col);
 	uint16_t & b = at(row, col + 1);
 

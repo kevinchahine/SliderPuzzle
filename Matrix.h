@@ -26,8 +26,8 @@ public:
 
 protected:
 	size_t map(size_t row, size_t col) const;
-	//size_t colCoord(size_t index) const;
-	//size_t rowCoord(size_t index) const;
+	size_t colCoord(size_t index) const;
+	size_t rowCoord(size_t index) const;
 
 protected:
 	size_t nRows;
@@ -156,6 +156,18 @@ template<typename T>
 inline size_t Matrix<T>::map(size_t row, size_t col) const
 {
 	return col + row * nCols;
+}
+
+template<typename T>
+inline size_t Matrix<T>::colCoord(size_t index) const
+{
+	return index % nCols;
+}
+
+template<typename T>
+inline size_t Matrix<T>::rowCoord(size_t index) const
+{
+	return index / nCols;
 }
 
 
