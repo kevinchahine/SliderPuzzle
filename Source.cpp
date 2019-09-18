@@ -6,6 +6,7 @@
 #include "MatrixDriver.h"
 #include "SliderBoardDriver.h"
 #include "SliderUtility.h"
+#include "Slide.h"
 
 using namespace std;
 
@@ -21,9 +22,13 @@ int main()
 	//s.slide();
 
 	SliderBoard slider;
-	shuffle(slider, 10);
+	//shuffle(slider, 10);
+
+	bool (SliderBoard::*slidePtr)() = &SliderBoard::slideDownSafe;
+	//SafeSlide_T slide = SliderBoard::slideDownSafe;
+	(slider.*slidePtr)();
 
 	slider.print();
-
+	
 	return 0;
 }
