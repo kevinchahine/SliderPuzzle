@@ -124,23 +124,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coordinate.cpp" />
+    <ClCompile Include="FastSlideSequence.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
+    <ClCompile Include="SafeSlideSequence.cpp" />
     <ClCompile Include="SliderBoard.cpp" />
     <ClCompile Include="SliderBoardDriver.cpp" />
     <ClCompile Include="SliderSolver.cpp" />
     <ClCompile Include="SliderUtility.cpp" />
+    <ClCompile Include="SlideSequence.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="FastSlideSequence.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixDriver.h" />
+    <ClInclude Include="SafeSlideSequence.h" />
     <ClInclude Include="Slide.h" />
     <ClInclude Include="SliderBoard.h" />
     <ClInclude Include="SliderBoardDriver.h" />
     <ClInclude Include="SliderSolver.h" />
     <ClInclude Include="SliderUtility.h" />
+    <ClInclude Include="SlideSequence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
