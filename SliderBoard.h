@@ -5,8 +5,9 @@
 
 #include "Coordinate.h"
 #include "Matrix.h"
+#include "SliderUtility.h"
 
-class SliderBoard :	public Matrix<uint16_t>
+class SliderBoard :	public Matrix<uint8_t>
 {
 public:
 	SliderBoard();

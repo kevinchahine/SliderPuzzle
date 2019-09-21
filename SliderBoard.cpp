@@ -6,41 +6,41 @@
 using namespace std;
 
 SliderBoard::SliderBoard() :
-	Matrix<uint16_t>(3, 3),
+	Matrix<uint8_t>(3, 3),
 	spaceCoordinate(0, 0)
 {
 	for (size_t i = 0; i < this->getNElements(); i++)
 	{
-		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
+		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(i);
 	}
 }
 
 SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
-	Matrix<uint16_t>(nRows, nCols),
+	Matrix<uint8_t>(nRows, nCols),
 	spaceCoordinate(0, 0) 
 {
 	for (size_t i = 0; i < this->getNElements(); i++) 
 	{
-		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
+		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(i);
 	}
 }
 
 SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint32_t checksum) :
-	Matrix<uint16_t>(nRows, nCols),
+	Matrix<uint8_t>(nRows, nCols),
 	spaceCoordinate(0, 0)
 {
 	initBy32BitChecksum(checksum);
 }
 
 SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint64_t checksum) :
-	Matrix<uint16_t>(nRows, nCols),
+	Matrix<uint8_t>(nRows, nCols),
 	spaceCoordinate(0, 0)
 {
 	initBy64BitChecksum(checksum);
 }
 
 SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
-	Matrix<uint16_t>(static_cast<Matrix<uint16_t>>(sliderBoard)),
+	Matrix<uint8_t>(static_cast<Matrix<uint8_t>>(sliderBoard)),
 	spaceCoordinate(sliderBoard.spaceCoordinate) 
 {}
 
@@ -118,10 +118,10 @@ void SliderBoard::slideUpFast()
 {
 	size_t col = spaceCoordinate.col();
 	size_t row = spaceCoordinate.row();
-	uint16_t & a = at(row, col);
-	uint16_t & b = at(row - 1, col);
+	uint8_t & a = at(row, col);
+	uint8_t & b = at(row - 1, col);
 
-	uint16_t temp = a;
+	uint8_t temp = a;
 	a = b;
 	b = temp;
 
@@ -132,10 +132,10 @@ void SliderBoard::slideDownFast()
 {
 	size_t col = spaceCoordinate.col();
 	size_t row = spaceCoordinate.row();
-	uint16_t & a = at(row, col);
-	uint16_t & b = at(row + 1, col);
+	uint8_t & a = at(row, col);
+	uint8_t & b = at(row + 1, col);
 
-	uint16_t temp = a;
+	uint8_t temp = a;
 	a = b;
 	b = temp; spaceCoordinate.row()++;
 }
@@ -144,10 +144,10 @@ void SliderBoard::slideLeftFast()
 {
 	size_t col = spaceCoordinate.col();
 	size_t row = spaceCoordinate.row();
-	uint16_t & a = at(row, col);
-	uint16_t & b = at(row, col - 1);
+	uint8_t & a = at(row, col);
+	uint8_t & b = at(row, col - 1);
 
-	uint16_t temp = a;
+	uint8_t temp = a;
 	a = b;
 	b = temp; 
 	
@@ -158,10 +158,10 @@ void SliderBoard::slideRightFast()
 {
 	size_t col = spaceCoordinate.col();
 	size_t row = spaceCoordinate.row();
-	uint16_t & a = at(row, col);
-	uint16_t & b = at(row, col + 1);
+	uint8_t & a = at(row, col);
+	uint8_t & b = at(row, col + 1);
 
-	uint16_t temp = a;
+	uint8_t temp = a;
 	a = b;
 	b = temp;
 
@@ -171,7 +171,13 @@ void SliderBoard::slideRightFast()
 void SliderBoard::print(std::ostream & os) const
 {
 	// Use this for now. Later make a more appealing print function
-	this->Matrix<uint16_t>::print(os);
+	for (size_t r = 0; r < nRows; r++) {
+		for (size_t c = 0; c < nCols; c++) {
+			os << std::setw(6) << static_cast<int>(at(r, c));
+		}
+		os << '\n';
+	}
+	os << '\n';
 }
 
 uint32_t SliderBoard::calc32BitChecksum() const
@@ -200,37 +206,38 @@ uint64_t SliderBoard::calc64BitChecksum() const
 
 void SliderBoard::initBy32BitChecksum(uint32_t checksum)
 {
-	const size_t N_ELEMENTS = this->getNElements();
+	const int N_ELEMENTS = this->getNElements();
 
 	register uint32_t tempA;
 	register uint32_t tempB;
 
-	for (size_t i = 0; i < N_ELEMENTS; i++)
+	for (int i = 0; i < N_ELEMENTS; i++)
 	{
 		tempA =
-			static_cast<uint32_t>(checksum / pow(N_ELEMENTS, i));
-		tempB = 
-			static_cast<uint32_t>(checksum / pow(N_ELEMENTS, i + 1)) * N_ELEMENTS;
+			static_cast<uint32_t>(shift(checksum, N_ELEMENTS, -i));
+		tempB =
+			static_cast<uint32_t>(shift(checksum, N_ELEMENTS, -(i + 1))) * N_ELEMENTS;
 
-		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(tempA - tempB);
+		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(tempA - tempB);
 	}
 }
 
 void SliderBoard::initBy64BitChecksum(uint64_t checksum)
 {
-	const size_t N_ELEMENTS = this->getNElements();
+	const int N_ELEMENTS = this->getNElements();
 
 	register uint64_t tempA;
 	register uint64_t tempB;
 
-	for (size_t i = 0; i < N_ELEMENTS; i++)
+	for (int i = 0; i < N_ELEMENTS; i++)
 	{
+		double p = pow(N_ELEMENTS, i);
+		cout << isinf(p) << ' ';	// TODO: <--remove this line
 		tempA =
-			static_cast<uint64_t>(checksum / pow(N_ELEMENTS, i));
+			static_cast<uint64_t>(shift(checksum, N_ELEMENTS, -i));
 		tempB =
-			static_cast<uint64_t>(checksum / pow(N_ELEMENTS, i + 1)) * N_ELEMENTS;
+			static_cast<uint64_t>(shift(checksum, N_ELEMENTS, -(i + 1))) * N_ELEMENTS;
 
-		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(tempA - tempB);
+		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(tempA - tempB);
 	}
 }
-

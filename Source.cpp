@@ -20,7 +20,9 @@ int main()
 	SliderBoardDriver s;
 	//s.test();
 	//s.slide();
-	s.testChecksum();
+	//s.testChecksum();
+	s.largeBoard();
+	//s.shift();
 
 	//SliderBoard slider;
 	//shuffle(slider, 10);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SliderBoard.h"
+#include "SliderUtility.h"
 
 class SliderBoardDriver
 {
@@ -10,5 +11,9 @@ public:
 	int slide();
 
 	int testChecksum();
+
+	int largeBoard();
+
+	int testShift();
 };
 

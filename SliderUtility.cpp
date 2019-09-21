@@ -26,3 +26,4 @@ void shuffle(SliderBoard & board, size_t count)
 		}
 	}
 }
+

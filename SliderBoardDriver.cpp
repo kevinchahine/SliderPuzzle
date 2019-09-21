@@ -69,3 +69,27 @@ int SliderBoardDriver::testChecksum()
 
 	return 0;
 }
+
+int SliderBoardDriver::largeBoard()
+{
+	SliderBoard board(5,5);
+	shuffle(board, 16 * 16);
+	board.print();
+	
+	uint64_t checksum = board.calc64BitChecksum();
+	cout << "64 bit checksum = " << checksum << '\n'
+		<< "32 bit checksum = " << board.calc32BitChecksum() << '\n';
+	
+	SliderBoard board2(5,5, checksum);
+	board2.print();
+
+	return 0;
+}
+
+int SliderBoardDriver::testShift()
+{
+	cout << "54321 truncated to 100's place is "
+		<< shift<uint32_t>(54321, 10, 2) << '\n';
+
+	return 0;
+}
