@@ -13,111 +13,126 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="TestDrivers">
+      <UniqueIdentifier>{b3a854e2-f8fe-4355-9d7f-dfb51e003239}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Checksum">
+      <UniqueIdentifier>{b7e1d7bc-a057-4090-9376-d069d60d9a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slide">
+      <UniqueIdentifier>{2252c73b-478d-412b-b2ac-11ed7a047f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slider">
+      <UniqueIdentifier>{f3e7ca16-d3db-4b43-b3ac-e1b9fb1e7155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Solver">
+      <UniqueIdentifier>{099809fe-e9ef-459f-bffa-1b4019406498}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderBoard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Coordinate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ChecksumDriver.cpp">
+      <Filter>TestDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixDriver.cpp">
+      <Filter>TestDrivers</Filter>
+    </ClCompile>
     <ClCompile Include="SliderBoardDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderUtility.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderSolver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SlideSequence.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FastSlideSequence.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SafeSlideSequence.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternDatabase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>TestDrivers</Filter>
     </ClCompile>
     <ClCompile Include="SliderUtilityDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Checksum4x4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Checksum3x3.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>TestDrivers</Filter>
     </ClCompile>
     <ClCompile Include="Checksum.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Checksum</Filter>
     </ClCompile>
-    <ClCompile Include="ChecksumDriver.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Checksum3x3.cpp">
+      <Filter>Checksum</Filter>
+    </ClCompile>
+    <ClCompile Include="Checksum4x4.cpp">
+      <Filter>Checksum</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderBoard.cpp">
+      <Filter>Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="FastSlideSequence.cpp">
+      <Filter>Slide</Filter>
+    </ClCompile>
+    <ClCompile Include="SafeSlideSequence.cpp">
+      <Filter>Slide</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideSequence.cpp">
+      <Filter>Slide</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderUtility.cpp">
+      <Filter>Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabase.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderSolver.cpp">
+      <Filter>Solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MatrixDriver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderBoard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Coordinate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ChecksumDriver.h">
+      <Filter>TestDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixDriver.h">
+      <Filter>TestDrivers</Filter>
+    </ClInclude>
     <ClInclude Include="SliderBoardDriver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderUtility.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderSolver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Slide.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SlideSequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FastSlideSequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SafeSlideSequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MatrixArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternDatabase.h">
-      <Filter>Header Files</Filter>
+      <Filter>TestDrivers</Filter>
     </ClInclude>
     <ClInclude Include="SliderUtilityDriver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Checksum4x4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Checksum3x3.h">
-      <Filter>Header Files</Filter>
+      <Filter>TestDrivers</Filter>
     </ClInclude>
     <ClInclude Include="Checksum.h">
-      <Filter>Header Files</Filter>
+      <Filter>Checksum</Filter>
     </ClInclude>
-    <ClInclude Include="ChecksumDriver.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Checksum3x3.h">
+      <Filter>Checksum</Filter>
+    </ClInclude>
+    <ClInclude Include="Checksum4x4.h">
+      <Filter>Checksum</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixArray.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderBoard.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="FastSlideSequence.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeSlideSequence.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="Slide.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideSequence.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderUtility.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabase.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderSolver.h">
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -25,20 +25,6 @@ SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
 	}
 }
 
-//SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint32_t checksum) :
-//	Matrix<uint8_t>(nRows, nCols),
-//	spaceCoordinate(0, 0)
-//{
-//	init3x3Checksum(checksum);
-//}
-//
-//SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint64_t checksum) :
-//	Matrix<uint8_t>(nRows, nCols),
-//	spaceCoordinate(0, 0)
-//{
-//	init4x4Checksum(checksum);
-//}
-
 SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
 	Matrix<uint8_t>(static_cast<Matrix<uint8_t>>(sliderBoard)),
 	spaceCoordinate(sliderBoard.spaceCoordinate) 
@@ -206,66 +192,3 @@ void SliderBoard::print(std::ostream & os) const
 	os << '\n';
 }
 
-uint32_t SliderBoard::calc32BitChecksum() const
-{
-	uint32_t checksum = 0;
-	const size_t N_ELEMENTS = this->getNElements();
-
-	for (size_t i = 0; i < N_ELEMENTS; i++) {
-		checksum += this->at(i) * static_cast<uint32_t>(pow(N_ELEMENTS, i));
-	}
-
-	return checksum;
-}
-
-uint64_t SliderBoard::calc64BitChecksum() const
-{
-	uint64_t checksum = 0;
-	const size_t N_ELEMENTS = this->getNElements();
-
-	for (size_t i = 0; i < N_ELEMENTS; i++) {
-		checksum += this->at(i) * static_cast<uint64_t>(pow(N_ELEMENTS, i));
-	}
-
-	return checksum;
-}
-
-void SliderBoard::init3x3Checksum(uint32_t checksum3x3)
-{
-	const int N_ELEMENTS = this->getNElements();
-
-	register uint32_t tempA;
-	register uint32_t tempB;
-
-	for (int i = 0; i < N_ELEMENTS; i++)
-	{
-		tempA =
-			static_cast<uint32_t>(shift(checksum3x3, N_ELEMENTS, -i));
-		tempB =
-			static_cast<uint32_t>(shift(checksum3x3, N_ELEMENTS, -(i + 1))) * N_ELEMENTS;
-
-		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(tempA - tempB);
-	}
-}
-
-void SliderBoard::init4x4Checksum(uint64_t checksum4x4)
-{
-//	const int N_ELEMENTS = this->getNElements();
-//
-//	register uint64_t tempA;
-//	register uint64_t tempB;
-//
-//	for (int i = 0; i < N_ELEMENTS; i++)
-//	{
-//		double p = pow(N_ELEMENTS, i);
-//		
-//
-//
-//		/*tempA =
-//			static_cast<uint64_t>(checksum4x4 >> -ishift(checksum, N_ELEMENTS, -i));
-//		tempB =
-//			static_cast<uint64_t>(shift(checksum, N_ELEMENTS, -(i + 1))) * N_ELEMENTS;
-//
-//		this->std::vector<uint8_t>::at(i) = static_cast<uint8_t>(tempA - tempB);*/
-//	}
-}

@@ -43,22 +43,6 @@ public:
 
 	void print(std::ostream & os = std::cout) const;
 
-	uint32_t calc32BitChecksum() const;
-	uint64_t calc64BitChecksum() const;
-
-protected:
-	// Initializes the elements of a 3x3 slider board based on the value of the 
-	//		checksum
-	// WARNING: Only works for sliderboards of size 3x3 using on boards of other 
-	//		sizes may cause unexpected results
-	void init3x3Checksum(uint32_t checksum3x3);
-
-	// Initializes the elements of a 4x4 slider board based on the value of the 
-	//		checksum
-	// WARNING: Only works for sliderboards of size 4x4 using on boards of other 
-	//		sizes may cause unexpected results
-	void init4x4Checksum(uint64_t checksum4x4);
-
 protected:
 	Coordinate spaceCoordinate;
 };

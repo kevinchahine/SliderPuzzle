@@ -23,10 +23,12 @@ void Checksum4x4::setChecksum(const SliderBoard & board)
 
 	for (size_t cellIndex = board.size() - 1; cellIndex != 0; cellIndex--) {
 		#if _DEBUG 
-		if (board.at(cellIndex > 15))
+		if (board.at(cellIndex) > 15)
 		{
 			cerr << __FILE__ << " line " << __LINE__ << '\n'
-				<< "exception: cell value is greater than 15\n";
+				<< "exception: cell value = " 
+				<< static_cast<int>(board.at(cellIndex))
+				<< " is greater than 15\n";
 			return;
 		}
 		#endif

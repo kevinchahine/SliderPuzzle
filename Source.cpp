@@ -41,6 +41,7 @@ int main()
 
 	ChecksumDriver checksumDriver;
 	checksumDriver.test4x4Checksum();
-
+	checksumDriver.test3x3Checksum();
+	
 	return 0;
 }
