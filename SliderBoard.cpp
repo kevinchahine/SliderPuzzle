@@ -159,3 +159,8 @@ void SliderBoard::print(std::ostream & os) const
 	this->Matrix<uint16_t>::print(os);
 }
 
+uint32_t SliderBoard::calcChecksum() const
+{
+	return ;
+}
+

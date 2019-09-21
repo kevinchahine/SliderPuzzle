@@ -32,6 +32,8 @@ public:
 
 	void print(std::ostream & os = std::cout) const;
 
+	uint32_t calcChecksum() const;
+
 protected:
 	Coordinate spaceCoordinate;
 };

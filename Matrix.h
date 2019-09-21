@@ -4,13 +4,13 @@
 #include <iomanip>
 #include <vector>
 
-template<typename T>
-class Matrix : public std::vector<T>
+template<typename T, size_t N_ROWS, size_t N_COLS>
+class Matrix : public std::array<std::array<T, N_COLS>, N_ROWS>
 {
 public:
 	Matrix();
-	Matrix(size_t nRows, size_t nCols, const T & initializer);
-	Matrix(size_t nRows, size_t nCols, const T && initializer = T());
+	Matrix(const T & initializer);
+	Matrix(const T && initializer = T());
 	Matrix(const Matrix & matrix);
 	Matrix(const Matrix && matrix);
 	~Matrix();
@@ -23,152 +23,79 @@ public:
 	size_t getNElements() const;
 
 	void print(std::ostream & os = std::cout) const;
-
-protected:
-	size_t map(size_t row, size_t col) const;
-	size_t colCoord(size_t index) const;
-	size_t rowCoord(size_t index) const;
-
-protected:
-	size_t nRows;
-	size_t nCols;
 };
 
 // ================================= CONSTRUCTORS ========================
 
-template<typename T>
-Matrix<T>::Matrix() :
-	std::vector<T>(1, T()),
-	nRows(1),
-	nCols(1) {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::Matrix() :
+	std::array<std::array<T, N_COLS>, N_ROWS>(T()) 
+{}
 
-template<typename T>
-Matrix<T>::Matrix(size_t nRows, size_t nCols, const T & initializer) :
-	std::vector<T>(nRows * nCols, initializer),
-	nRows(nRows),
-	nCols(nCols) {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::Matrix(const T & initializer) :
+	std::array<std::array<T, N_COLS>, N_ROWS>(initializer) 
+{}
 
-template<typename T>
-Matrix<T>::Matrix(size_t nRows, size_t nCols, const T && initializer) :
-	std::vector<T>(nRows * nCols, initializer),
-	nRows(nRows),
-	nCols(nCols) {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::Matrix(const T && initializer) :
+	std::array<std::array<T, N_COLS>, N_ROWS>(initializer) 
+{}
 
-template<typename T>
-Matrix<T>::Matrix(const Matrix & matrix) :
-	std::vector<T>(matrix),
-	nRows(matrix.nRows),
-	nCols(matrix.nCols) {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::Matrix(const Matrix & matrix) :
+	std::array<std::array<T, N_COLS>, N_ROWS>(matrix) 
+{}
 
-template<typename T>
-inline Matrix<T>::Matrix(const Matrix && matrix) :
-	std::vector<T>(std::move(matrix)),
-	nRows(matrix.nRows),
-	nCols(matrix.nCols) {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::Matrix(const Matrix && matrix) :
+	std::array<std::array<T, N_COLS>, N_ROWS>(matrix)
+{}
 
-template<typename T>
-Matrix<T>::~Matrix() {}
+template<typename T, size_t N_ROWS, size_t N_COLS>
+Matrix<T, N_ROWS, N_COLS>::~Matrix()
+{}
 
 // ============================ METHODS =======================
 
-template<typename T>
-T & Matrix<T>::at(size_t row, size_t col)
+template<typename T, size_t N_ROWS, size_t N_COLS>
+inline T & Matrix<T, N_ROWS, N_COLS>::at(size_t row, size_t col)
 {
-	if (row > nRows)
-	{
-#if _DEBUG
-		std::cerr << __FILE__
-			<< " function " << __FILE__
-			<< " row is out of bounds\n";
-#endif
-		return (*this)[0];
-	}
-	if (col > nCols)
-	{
-#if _DEBUG
-		std::cerr << __FILE__
-			<< " function " << __FILE__
-			<< " col is out of bounds\n";
-#endif
-		return(*this)[0];
-	}
-	T temp = static_cast<std::vector<T>>(*this).at(map(row, col));
-
-	return std::vector<T>::at(map(row, col));
+	return std::array<std::array<T, N_COLS>, N_ROWS>::at(row).at(col);
 }
 
-template<typename T>
-const T & Matrix<T>::at(size_t row, size_t col) const
+template<typename T, size_t N_ROWS, size_t N_COLS>
+inline const T & Matrix<T, N_ROWS, N_COLS>::at(size_t row, size_t col) const
 {
-	if (row > nRows)
-	{
-#if _DEBUG
-		std::cerr << __FILE__
-			<< " function " << __func__
-			<< " row is out of bounds\n";
-#endif
-		return (*this)[0];
-	}
-	if (col > nCols)
-	{
-#if _DEBUG
-		std::cerr << __FILE__
-			<< " function " << __func__
-			<< " col is out of bounds\n";
-#endif
-		return(*this)[0];
-	}
-
-	return std::vector<T>::at(map(row, col));
+	return std::array<std::array<T, N_COLS>, N_ROWS>::at(row).at(col);
 }
 
-template<typename T>
-inline size_t Matrix<T>::getNRows() const
+template<typename T, size_t N_ROWS, size_t N_COLS>
+inline size_t Matrix<T, N_ROWS, N_COLS>::getNRows() const
 {
-	return this->nRows;
+	return N_ROWS;
 }
 
-template<typename T>
-inline size_t Matrix<T>::getNCols() const
+template<typename T, size_t N_ROWS, size_t N_COLS>
+inline size_t Matrix<T, N_ROWS, N_COLS>::getNCols() const
 {
-	return this->nCols;
+	return N_COLS;
 }
 
-template<typename T>
-inline size_t Matrix<T>::getNElements() const
+template<typename T, size_t N_ROWS, size_t N_COLS>
+inline size_t Matrix<T, N_ROWS, N_COLS>::getNElements() const
 {
-	return this->size();
+	return N_ROWS * N_COLS;
 }
 
-template<typename T>
-void Matrix<T>::print(std::ostream & os) const
+template<typename T, size_t N_ROWS, size_t N_COLS>
+void Matrix<T, N_ROWS, N_COLS>::print(std::ostream & os) const
 {
-	for (size_t r = 0; r < nRows; r++) {
-		for (size_t c = 0; c < nCols; c++) {
+	for (size_t r = 0; r < N_ROWS; r++) {
+		for (size_t c = 0; c < N_COLS; c++) {
 			os << std::setw(6) << at(r, c);
 		}
 		os << '\n';
 	}
 	os << '\n';
 }
-
-template<typename T>
-inline size_t Matrix<T>::map(size_t row, size_t col) const
-{
-	return col + row * nCols;
-}
-
-template<typename T>
-inline size_t Matrix<T>::colCoord(size_t index) const
-{
-	return index % nCols;
-}
-
-template<typename T>
-inline size_t Matrix<T>::rowCoord(size_t index) const
-{
-	return index / nCols;
-}
-
-
-
