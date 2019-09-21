@@ -3,10 +3,14 @@
 #include <time.h>
 #include <random>
 
-#include "MatrixDriver.h"
-#include "SliderBoardDriver.h"
 #include "SliderUtility.h"
 #include "Slide.h"
+
+// Include Drivers for testing
+#include "ChecksumDriver.h"
+#include "MatrixDriver.h"
+#include "SliderBoardDriver.h"
+#include "SliderUtilityDriver.h"
 
 using namespace std;
 
@@ -17,11 +21,11 @@ int main()
 	//MatrixDriver m;
 	//m.test();
 
-	SliderBoardDriver s;
+	//SliderBoardDriver s;
 	//s.test();
 	//s.slide();
 	//s.testChecksum();
-	s.largeBoard();
+	//s.largeBoard();
 	//s.shift();
 
 	//SliderBoard slider;
@@ -33,5 +37,10 @@ int main()
 
 	//slider.print();
 	
+	//SliderUtilityDriver::testShift64();
+
+	ChecksumDriver checksumDriver;
+	checksumDriver.test4x4Checksum();
+
 	return 0;
 }

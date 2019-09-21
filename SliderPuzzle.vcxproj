@@ -123,6 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Checksum.cpp" />
+    <ClCompile Include="Checksum3x3.cpp" />
+    <ClCompile Include="Checksum4x4.cpp" />
+    <ClCompile Include="ChecksumDriver.cpp" />
     <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="FastSlideSequence.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
@@ -132,10 +136,15 @@
     <ClCompile Include="SliderBoardDriver.cpp" />
     <ClCompile Include="SliderSolver.cpp" />
     <ClCompile Include="SliderUtility.cpp" />
+    <ClCompile Include="SliderUtilityDriver.cpp" />
     <ClCompile Include="SlideSequence.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Checksum.h" />
+    <ClInclude Include="Checksum3x3.h" />
+    <ClInclude Include="Checksum4x4.h" />
+    <ClInclude Include="ChecksumDriver.h" />
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="FastSlideSequence.h" />
     <ClInclude Include="MatrixArray.h" />
@@ -148,6 +157,7 @@
     <ClInclude Include="SliderBoardDriver.h" />
     <ClInclude Include="SliderSolver.h" />
     <ClInclude Include="SliderUtility.h" />
+    <ClInclude Include="SliderUtilityDriver.h" />
     <ClInclude Include="SlideSequence.h" />
   </ItemGroup>
   <ItemGroup>

@@ -29,7 +29,7 @@ T shift(T value, uint32_t base, int32_t shift);
 template<typename T>
 T shift(T value, uint32_t base, int32_t shift)
 {
-	// If shift is negative, shift to the right (Hint: Divide)
+	// If shift is negative, shift to the right (Hint: Divide by the base)
 	if (shift < 0) {
 		shift = abs(shift);
 
@@ -37,7 +37,7 @@ T shift(T value, uint32_t base, int32_t shift)
 			value /= base;
 		}
 	}
-	// If shift is not negative, shift to the left (Hint: Multiply)
+	// If shift is not negative, shift to the left (Hint: Multiply by the base)
 	else {
 		for (int32_t i = 0; i < shift; i++) {
 			value *= base;

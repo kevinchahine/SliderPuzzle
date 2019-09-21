@@ -64,8 +64,8 @@ int SliderBoardDriver::testChecksum()
 	uint32_t checksum = board.calc32BitChecksum();
 	cout << "Checksum = " << checksum << '\n';
 
-	SliderBoard board2(3, 3, checksum);
-	board2.print();
+	//SliderBoard board2(3, 3, checksum);
+	//board2.print();
 
 	return 0;
 }
@@ -80,8 +80,8 @@ int SliderBoardDriver::largeBoard()
 	cout << "64 bit checksum = " << checksum << '\n'
 		<< "32 bit checksum = " << board.calc32BitChecksum() << '\n';
 	
-	SliderBoard board2(5,5, checksum);
-	board2.print();
+	//SliderBoard board2(5,5, checksum);
+	//board2.print();
 
 	return 0;
 }
