@@ -11,6 +11,7 @@
 #include "MatrixDriver.h"
 #include "SliderBoardDriver.h"
 #include "SliderUtilityDriver.h"
+#include "PatternDatabaseDriver.h"
 
 using namespace std;
 
@@ -39,9 +40,12 @@ int main()
 	
 	//SliderUtilityDriver::testShift64();
 
-	ChecksumDriver checksumDriver;
-	checksumDriver.test4x4Checksum();
-	checksumDriver.test3x3Checksum();
+	//ChecksumDriver checksumDriver;
+	//checksumDriver.test4x4Checksum();
+	//checksumDriver.test3x3Checksum();
 	
+	PatternDatabaseDriver patternDatabaseDriver;
+	patternDatabaseDriver.testReadWrite3x3();
+
 	return 0;
 }

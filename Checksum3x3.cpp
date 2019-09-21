@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Checksum3x3::Checksum3x3(uint32_t checksum) :
+	Checksum(checksum)
+{
+}
+
 Checksum3x3::Checksum3x3(const SliderBoard & board)
 {
 	setChecksum(board);
@@ -54,4 +59,14 @@ void Checksum3x3::calcSliderBoard(SliderBoard & board) const
 
 		board.at(i) = static_cast<uint8_t>(tempA - tempB);
 	}
+}
+
+bool Checksum3x3::operator<(const Checksum3x3 & right) const
+{
+	return this->checksum < right.checksum;
+}
+
+bool Checksum3x3::operator==(const Checksum3x3 & right) const
+{
+	return this->checksum == right.checksum;
 }

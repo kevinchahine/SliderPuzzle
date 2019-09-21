@@ -78,6 +78,12 @@
     <ClCompile Include="SliderSolver.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
+    <ClCompile Include="PatternDatabase3x3.cpp">
+      <Filter>TestDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabaseDriver.cpp">
+      <Filter>TestDrivers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordinate.h">
@@ -134,8 +140,18 @@
     <ClInclude Include="SliderSolver.h">
       <Filter>Solver</Filter>
     </ClInclude>
+    <ClInclude Include="PatternDatabase3x3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabaseDriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AI-Solver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="database3x3.dat" />
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>

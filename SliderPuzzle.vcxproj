@@ -131,6 +131,8 @@
     <ClCompile Include="FastSlideSequence.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
     <ClCompile Include="PatternDatabase.cpp" />
+    <ClCompile Include="PatternDatabase3x3.cpp" />
+    <ClCompile Include="PatternDatabaseDriver.cpp" />
     <ClCompile Include="SafeSlideSequence.cpp" />
     <ClCompile Include="SliderBoard.cpp" />
     <ClCompile Include="SliderBoardDriver.cpp" />
@@ -151,6 +153,8 @@
     <ClInclude Include="MatrixDriver.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="PatternDatabase.h" />
+    <ClInclude Include="PatternDatabase3x3.h" />
+    <ClInclude Include="PatternDatabaseDriver.h" />
     <ClInclude Include="SafeSlideSequence.h" />
     <ClInclude Include="Slide.h" />
     <ClInclude Include="SliderBoard.h" />
@@ -162,6 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="AI-Solver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="database3x3.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

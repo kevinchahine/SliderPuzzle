@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Checksum4x4::Checksum4x4(uint64_t checksum) :
+	Checksum(checksum)
+{
+}
+
 Checksum4x4::Checksum4x4(const SliderBoard & board)
 {
 	setChecksum(board);
