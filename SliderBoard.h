@@ -4,7 +4,7 @@
 #include <iomanip>
 
 #include "Coordinate.h"
-#include "MatrixVector.h"
+#include "Matrix.h"
 
 class SliderBoard :	public Matrix<uint16_t>
 {
@@ -34,6 +34,11 @@ public:
 	void print(std::ostream & os = std::cout) const;
 
 	uint32_t calcChecksum() const;
+
+protected:
+	// Initializes the elements of the slider board
+	// based on the value of the checksum
+	void initByChecksum(uint32_t checksum);
 
 protected:
 	Coordinate spaceCoordinate;

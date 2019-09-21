@@ -139,7 +139,7 @@
     <ClInclude Include="FastSlideSequence.h" />
     <ClInclude Include="MatrixArray.h" />
     <ClInclude Include="MatrixDriver.h" />
-    <ClInclude Include="MatrixVector.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="SafeSlideSequence.h" />
     <ClInclude Include="Slide.h" />
     <ClInclude Include="SliderBoard.h" />

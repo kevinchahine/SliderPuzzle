@@ -1,5 +1,7 @@
 #include "SliderBoardDriver.h"
 
+using namespace std;
+
 int SliderBoardDriver::test()
 {
 	SliderBoard board(4, 6);
@@ -45,6 +47,25 @@ int SliderBoardDriver::slide()
 	board.print();
 	board.slideRightSafe();
 	board.print();
+
+	return 0;
+}
+
+int SliderBoardDriver::testChecksum()
+{
+	SliderBoard board(3, 3);
+	board.slideUpSafe();
+	board.slideLeftSafe();
+	board.slideLeftSafe();
+	board.slideRightSafe();
+
+	board.print();
+
+	uint32_t checksum = board.calcChecksum();
+	cout << "Checksum = " << checksum << '\n';
+
+	SliderBoard board2(3, 3, checksum);
+	board2.print();
 
 	return 0;
 }

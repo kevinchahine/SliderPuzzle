@@ -3,11 +3,12 @@
 #include <iostream>
 
 //#include "MatrixArray.h"
-#include "MatrixVector.h"
+#include "Matrix.h"
 
 class MatrixDriver
 {
 public:
 	int test();
+
 };
 

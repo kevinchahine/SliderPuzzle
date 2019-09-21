@@ -14,21 +14,22 @@ default_random_engine generator(static_cast<unsigned int>(time(0)));
 
 int main()
 {
-	MatrixDriver m;
+	//MatrixDriver m;
 	//m.test();
 
 	SliderBoardDriver s;
 	//s.test();
 	//s.slide();
+	s.testChecksum();
 
-	SliderBoard slider;
+	//SliderBoard slider;
 	//shuffle(slider, 10);
 
-	bool (SliderBoard::*slidePtr)() = &SliderBoard::slideDownSafe;
+	//bool (SliderBoard::*slidePtr)() = &SliderBoard::slideDownSafe;
 	//SafeSlide_T slide = SliderBoard::slideDownSafe;
-	(slider.*slidePtr)();
+	//(slider.*slidePtr)();
 
-	slider.print();
+	//slider.print();
 	
 	return 0;
 }

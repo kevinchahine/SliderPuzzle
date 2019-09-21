@@ -8,5 +8,7 @@ public:
 	int test();
 
 	int slide();
+
+	int testChecksum();
 };
 
