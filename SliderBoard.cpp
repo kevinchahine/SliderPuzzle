@@ -1,5 +1,6 @@
 #include "SliderBoard.h"
 
+#include <math.h>
 #include <utility>
 
 using namespace std;
@@ -20,6 +21,22 @@ SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
 {
 	for (size_t i = 0; i < this->getNElements(); i++) 
 	{
+		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
+	}
+}
+
+SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint32_t checksum) :
+	Matrix<uint16_t>(nRows, nCols),
+	spaceCoordinate(0, 0)
+{
+	const size_t N_ELEMENTS = this->getNElements();
+
+	for (size_t i = 0; i < N_ELEMENTS; i++)
+	{
+		register uint16_t temp =
+			checksum / pow(i, N_ELEMENTS) -
+			checksum / pow(i, N_ELEMENTS + 1);
+
 		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(i);
 	}
 }
@@ -161,6 +178,13 @@ void SliderBoard::print(std::ostream & os) const
 
 uint32_t SliderBoard::calcChecksum() const
 {
-	return ;
+	uint32_t checksum = 0;
+	const size_t N_ELEMENTS = this->getNElements();
+
+	for (size_t i = 0; i < N_ELEMENTS; i++) {
+		checksum += this->at(i) * N_ELEMENTS;
+	}
+
+	return checksum;
 }
 

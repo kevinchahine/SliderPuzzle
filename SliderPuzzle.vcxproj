@@ -125,7 +125,6 @@
   <ItemGroup>
     <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="FastSlideSequence.cpp" />
-    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
     <ClCompile Include="SafeSlideSequence.cpp" />
     <ClCompile Include="SliderBoard.cpp" />
@@ -138,8 +137,9 @@
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="FastSlideSequence.h" />
-    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MatrixArray.h" />
     <ClInclude Include="MatrixDriver.h" />
+    <ClInclude Include="MatrixVector.h" />
     <ClInclude Include="SafeSlideSequence.h" />
     <ClInclude Include="Slide.h" />
     <ClInclude Include="SliderBoard.h" />

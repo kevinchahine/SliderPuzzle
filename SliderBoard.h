@@ -4,13 +4,14 @@
 #include <iomanip>
 
 #include "Coordinate.h"
-#include "Matrix.h"
+#include "MatrixVector.h"
 
 class SliderBoard :	public Matrix<uint16_t>
 {
 public:
 	SliderBoard();
 	SliderBoard(size_t nRows, size_t nCols);
+	SliderBoard(size_t nRows, size_t nCols, uint32_t checksum);
 	SliderBoard(const SliderBoard & sliderBoard);
 	SliderBoard(const SliderBoard && sliderBoard);
 	~SliderBoard();

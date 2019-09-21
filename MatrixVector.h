@@ -15,6 +15,9 @@ public:
 	Matrix(const Matrix && matrix);
 	~Matrix();
 
+	T & at(size_t index);
+	const T & at(size_t index) const;
+
 	T & at(size_t row, size_t col);
 	const T & at(size_t row, size_t col) const;
 
@@ -68,6 +71,18 @@ inline Matrix<T>::Matrix(const Matrix && matrix) :
 
 template<typename T>
 Matrix<T>::~Matrix() {}
+
+template<typename T>
+inline T & Matrix<T>::at(size_t index)
+{
+	return std::vector<T>::at(index);
+}
+
+template<typename T>
+inline const T & Matrix<T>::at(size_t index) const
+{
+	return std::vector<T>::at(index);
+}
 
 // ============================ METHODS =======================
 
