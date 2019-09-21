@@ -126,6 +126,7 @@
     <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="FastSlideSequence.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
+    <ClCompile Include="PatternDatabase.cpp" />
     <ClCompile Include="SafeSlideSequence.cpp" />
     <ClCompile Include="SliderBoard.cpp" />
     <ClCompile Include="SliderBoardDriver.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="MatrixArray.h" />
     <ClInclude Include="MatrixDriver.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="PatternDatabase.h" />
     <ClInclude Include="SafeSlideSequence.h" />
     <ClInclude Include="Slide.h" />
     <ClInclude Include="SliderBoard.h" />

@@ -61,7 +61,7 @@ int SliderBoardDriver::testChecksum()
 
 	board.print();
 
-	uint32_t checksum = board.calcChecksum();
+	uint32_t checksum = board.calc32BitChecksum();
 	cout << "Checksum = " << checksum << '\n';
 
 	SliderBoard board2(3, 3, checksum);

@@ -29,7 +29,14 @@ SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint32_t checksum) :
 	Matrix<uint16_t>(nRows, nCols),
 	spaceCoordinate(0, 0)
 {
-	initByChecksum(checksum);
+	initBy32BitChecksum(checksum);
+}
+
+SliderBoard::SliderBoard(size_t nRows, size_t nCols, uint64_t checksum) :
+	Matrix<uint16_t>(nRows, nCols),
+	spaceCoordinate(0, 0)
+{
+	initBy64BitChecksum(checksum);
 }
 
 SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
@@ -167,19 +174,31 @@ void SliderBoard::print(std::ostream & os) const
 	this->Matrix<uint16_t>::print(os);
 }
 
-uint32_t SliderBoard::calcChecksum() const
+uint32_t SliderBoard::calc32BitChecksum() const
 {
 	uint32_t checksum = 0;
 	const size_t N_ELEMENTS = this->getNElements();
 
 	for (size_t i = 0; i < N_ELEMENTS; i++) {
-		checksum += this->at(i) * pow(N_ELEMENTS, i);
+		checksum += this->at(i) * static_cast<uint32_t>(pow(N_ELEMENTS, i));
 	}
 
 	return checksum;
 }
 
-void SliderBoard::initByChecksum(uint32_t checksum)
+uint64_t SliderBoard::calc64BitChecksum() const
+{
+	uint64_t checksum = 0;
+	const size_t N_ELEMENTS = this->getNElements();
+
+	for (size_t i = 0; i < N_ELEMENTS; i++) {
+		checksum += this->at(i) * static_cast<uint64_t>(pow(N_ELEMENTS, i));
+	}
+
+	return checksum;
+}
+
+void SliderBoard::initBy32BitChecksum(uint32_t checksum)
 {
 	const size_t N_ELEMENTS = this->getNElements();
 
@@ -192,6 +211,24 @@ void SliderBoard::initByChecksum(uint32_t checksum)
 			static_cast<uint32_t>(checksum / pow(N_ELEMENTS, i));
 		tempB = 
 			static_cast<uint32_t>(checksum / pow(N_ELEMENTS, i + 1)) * N_ELEMENTS;
+
+		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(tempA - tempB);
+	}
+}
+
+void SliderBoard::initBy64BitChecksum(uint64_t checksum)
+{
+	const size_t N_ELEMENTS = this->getNElements();
+
+	register uint64_t tempA;
+	register uint64_t tempB;
+
+	for (size_t i = 0; i < N_ELEMENTS; i++)
+	{
+		tempA =
+			static_cast<uint64_t>(checksum / pow(N_ELEMENTS, i));
+		tempB =
+			static_cast<uint64_t>(checksum / pow(N_ELEMENTS, i + 1)) * N_ELEMENTS;
 
 		this->std::vector<uint16_t>::at(i) = static_cast<uint16_t>(tempA - tempB);
 	}
