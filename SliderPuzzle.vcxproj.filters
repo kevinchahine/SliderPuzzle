@@ -87,6 +87,9 @@
     <ClCompile Include="PatternDatabase4x4.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
+    <ClCompile Include="PatternDatabaseGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumDriver.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="PatternDatabase4x4.h">
       <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabaseGenerator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

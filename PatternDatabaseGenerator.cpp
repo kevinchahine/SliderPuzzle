@@ -1,0 +1,1 @@
+#include "PatternDatabaseGenerator.h"
