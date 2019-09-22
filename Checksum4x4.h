@@ -16,5 +16,9 @@ public:
 	void setChecksum(const SliderBoard & board);
 
 	void calcSliderBoard(SliderBoard & board) const;
+
+	bool operator<(const Checksum4x4 & right) const;
+
+	bool operator==(const Checksum4x4 & right) const;
 };
 

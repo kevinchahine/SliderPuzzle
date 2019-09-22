@@ -68,3 +68,13 @@ void Checksum4x4::calcSliderBoard(SliderBoard & board) const
 		tempChecksum >>= 4;
 	}
 }
+
+bool Checksum4x4::operator<(const Checksum4x4 & right) const
+{
+	return this->checksum < right.checksum;
+}
+
+bool Checksum4x4::operator==(const Checksum4x4 & right) const
+{
+	return this->checksum == right.checksum;
+}

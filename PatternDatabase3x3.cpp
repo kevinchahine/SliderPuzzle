@@ -8,23 +8,23 @@ PatternDatabase3x3::~PatternDatabase3x3() {}
 
 void PatternDatabase3x3::writeToFile(std::ofstream & outFile) const
 {
-	// 1.) Checksums (4 Bytes and Distances 2 Bytes)
+	// 1.) Checksums and Distances
 	PatternDatabase3x3::const_iterator it;
 	for (it = this->begin(); it != this->end(); it++) {
 		// 1-0.) Get Node
 		const pair<Checksum3x3, uint16_t> & node = *it;
 
-		// 1-1.) Checksum (8 Bytes)
-		outFile << node.first.getChecksum();
+		// 1-1.) Checksum 
+		outFile << node.first.getChecksum() << ' ';
 
-		// 1-2.) Distance to Solution (2 Bytes)
-		outFile << node.second;
+		// 1-2.) Distance to Solution
+		outFile << node.second << endl;
 	}
 }
 
 void PatternDatabase3x3::readFromFile(std::ifstream & inFile)
 {
-	// 1.) Checksums (4 Bytes and Distances 2 Bytes)
+	// 1.) Checksums and Distances
 	// Make sure we didn't reach the end of the file
 	while (!inFile.eof())
 	{

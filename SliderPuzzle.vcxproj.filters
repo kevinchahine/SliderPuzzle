@@ -33,9 +33,6 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Coordinate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ChecksumDriver.cpp">
       <Filter>TestDrivers</Filter>
     </ClCompile>
@@ -78,17 +75,20 @@
     <ClCompile Include="SliderSolver.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
-    <ClCompile Include="PatternDatabase3x3.cpp">
-      <Filter>TestDrivers</Filter>
-    </ClCompile>
     <ClCompile Include="PatternDatabaseDriver.cpp">
       <Filter>TestDrivers</Filter>
     </ClCompile>
+    <ClCompile Include="PatternDatabase3x3.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="Coordinate.cpp">
+      <Filter>Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabase4x4.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Coordinate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ChecksumDriver.h">
       <Filter>TestDrivers</Filter>
     </ClInclude>
@@ -141,10 +141,16 @@
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="PatternDatabase3x3.h">
-      <Filter>Header Files</Filter>
+      <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="PatternDatabaseDriver.h">
-      <Filter>Header Files</Filter>
+      <Filter>TestDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabase4x4.h">
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,5 +159,6 @@
   <ItemGroup>
     <None Include="database3x3.dat" />
     <None Include=".gitignore" />
+    <None Include="database4x4.dat" />
   </ItemGroup>
 </Project>

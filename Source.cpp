@@ -44,8 +44,9 @@ int main()
 	//checksumDriver.test4x4Checksum();
 	//checksumDriver.test3x3Checksum();
 	
-	PatternDatabaseDriver patternDatabaseDriver;
-	patternDatabaseDriver.testReadWrite3x3();
+	//PatternDatabaseDriver patternDatabaseDriver;
+	//patternDatabaseDriver.testReadWrite3x3();
+	//patternDatabaseDriver.testReadWrite4x4();
 
 	return 0;
 }

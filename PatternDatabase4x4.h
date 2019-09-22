@@ -2,13 +2,13 @@
 
 #include "PatternDatabase.h"
 
-#include "Checksum3x3.h"
+#include "Checksum4x4.h"
 
-class PatternDatabase3x3 : public PatternDatabase<Checksum3x3>
+class PatternDatabase4x4 : public PatternDatabase<Checksum4x4>
 {
 public:
-	PatternDatabase3x3();
-	~PatternDatabase3x3();
+	PatternDatabase4x4();
+	~PatternDatabase4x4();
 
 	void writeToFile(std::ofstream & outFile) const;
 
