@@ -21,8 +21,10 @@ public:
 	//// Only works on 4x4 boards.
 	//SliderBoard(size_t nRows, size_t nCols, uint64_t checksum4x4);
 	SliderBoard(const SliderBoard & sliderBoard);
-	SliderBoard(const SliderBoard && sliderBoard);
+	//SliderBoard(const SliderBoard && sliderBoard);
 	~SliderBoard();
+
+	void assign(const SliderBoard & board);
 
 	bool isSlideUpValid() const;
 	bool isSlideDownValid() const;
@@ -42,6 +44,8 @@ public:
 	void shuffle();
 
 	void print(std::ostream & os = std::cout) const;
+
+	SliderBoard & operator=(SliderBoard & board);
 
 protected:
 	Coordinate spaceCoordinate;

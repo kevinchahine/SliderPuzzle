@@ -10,5 +10,6 @@ class MatrixDriver
 public:
 	int test();
 
+	int testAssign();
 };
 

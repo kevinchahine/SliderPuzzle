@@ -36,3 +36,27 @@ int MatrixDriver::test()
 	
 	return 0;
 }
+
+int MatrixDriver::testAssign()
+{
+	Matrix<int> m(3, 4);
+
+	Matrix<int> n;
+
+	cout << "m:\n";
+	m.print();
+
+	cout << "n:\n";
+	n.print();
+
+	cout << "===== n.assign(m) =====\n";
+	n.assign(m);
+
+	cout << "m:\n";
+	m.print();
+
+	cout << "n:\n";
+	n.print();
+
+	return 0;
+}

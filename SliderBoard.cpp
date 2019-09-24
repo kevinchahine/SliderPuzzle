@@ -32,6 +32,13 @@ SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
 
 SliderBoard::~SliderBoard() {}
 
+void SliderBoard::assign(const SliderBoard & board)
+{
+	this->Matrix<uint8_t>::assign(board);
+
+	this->spaceCoordinate = board.spaceCoordinate;
+}
+
 bool SliderBoard::isSlideUpValid() const
 {
 	return this->spaceCoordinate.row() > 0;
@@ -190,5 +197,12 @@ void SliderBoard::print(std::ostream & os) const
 		os << '\n';
 	}
 	os << '\n';
+}
+
+SliderBoard & SliderBoard::operator=(SliderBoard & board)
+{
+	this->assign(board);
+
+	return *this;
 }
 

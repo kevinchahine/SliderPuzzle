@@ -6,6 +6,8 @@
 #include "SliderUtility.h"
 #include "Slide.h"
 
+#include "PatternDatabaseGenerator.h"
+
 // Include Drivers for testing
 #include "ChecksumDriver.h"
 #include "MatrixDriver.h"
@@ -21,6 +23,7 @@ int main()
 {
 	//MatrixDriver m;
 	//m.test();
+	//m.testAssign();
 
 	//SliderBoardDriver s;
 	//s.test();
@@ -48,5 +51,8 @@ int main()
 	//patternDatabaseDriver.testReadWrite3x3();
 	//patternDatabaseDriver.testReadWrite4x4();
 
+	PatternDatabaseGenerator patternGenerator;
+	PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
+	cout << "size = " << database.size() << '\n';
 	return 0;
 }

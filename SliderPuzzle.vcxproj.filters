@@ -88,7 +88,7 @@
       <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="PatternDatabaseGenerator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +156,7 @@
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="PatternDatabaseGenerator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

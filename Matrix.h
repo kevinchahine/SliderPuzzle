@@ -15,6 +15,8 @@ public:
 	Matrix(const Matrix && matrix);
 	~Matrix();
 
+	void assign(const Matrix & matrix);
+
 	T & at(size_t index);
 	const T & at(size_t index) const;
 
@@ -26,6 +28,8 @@ public:
 	size_t getNElements() const;
 
 	void print(std::ostream & os = std::cout) const;
+
+	const Matrix<T> & operator=(const Matrix<T> & matrix);
 
 protected:
 	size_t map(size_t row, size_t col) const;
@@ -71,6 +75,15 @@ inline Matrix<T>::Matrix(const Matrix && matrix) :
 
 template<typename T>
 Matrix<T>::~Matrix() {}
+
+template<typename T>
+void Matrix<T>::assign(const Matrix & matrix)
+{
+	this->std::vector<T>::assign(matrix.begin(), matrix.end());
+
+	this->nRows = matrix.nRows;
+	this->nCols = matrix.nCols;
+}
 
 template<typename T>
 inline T & Matrix<T>::at(size_t index)
@@ -165,6 +178,12 @@ void Matrix<T>::print(std::ostream & os) const
 		os << '\n';
 	}
 	os << '\n';
+}
+
+template<typename T>
+const Matrix<T> & Matrix<T>::operator=(const Matrix<T> & matrix)
+{
+	this->assign();
 }
 
 template<typename T>
