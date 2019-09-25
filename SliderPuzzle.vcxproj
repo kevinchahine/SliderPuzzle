@@ -139,6 +139,7 @@
     <ClCompile Include="SliderBoard.cpp" />
     <ClCompile Include="SliderBoardDriver.cpp" />
     <ClCompile Include="SliderSolver.cpp" />
+    <ClCompile Include="SliderSolver3x3.cpp" />
     <ClCompile Include="SliderUtility.cpp" />
     <ClCompile Include="SliderUtilityDriver.cpp" />
     <ClCompile Include="SlideSequence.cpp" />
@@ -164,12 +165,14 @@
     <ClInclude Include="SliderBoard.h" />
     <ClInclude Include="SliderBoardDriver.h" />
     <ClInclude Include="SliderSolver.h" />
+    <ClInclude Include="SliderSolver3x3.h" />
     <ClInclude Include="SliderUtility.h" />
     <ClInclude Include="SliderUtilityDriver.h" />
     <ClInclude Include="SlideSequence.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AI-Solver.txt" />
+    <Text Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

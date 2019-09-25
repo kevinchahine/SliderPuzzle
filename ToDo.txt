@@ -1,0 +1,10 @@
+classes:
+	- Move Constructers
+	- Copy Constructers
+	- Move Assignment operator overloads
+	- Copy Assignment operator overloads
+
+class PatternDatabase:
+	- Checksum calcChecksum();
+
+Store Database in code for faster read time.

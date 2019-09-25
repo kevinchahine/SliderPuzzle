@@ -1,6 +1,5 @@
 #include "PatternDatabaseGenerator.h"
 
-#include <algorithm>
 #include <queue>
 
 using namespace std;
@@ -26,13 +25,10 @@ PatternDatabase3x3 PatternDatabaseGenerator::generate3x3PatternDatabase() const
 	queue<pair<SliderBoard, uint16_t>> frontier;
 	frontier.push(pair<SliderBoard, uint16_t>(currentState, 0));
 
-	uint16_t maxDist = 0;
-
 	while (!frontier.empty()) {
 		// 0.) Pop next state from the frontier
 		currentState = frontier.front().first;
 		uint16_t distToSol = frontier.front().second;
-		maxDist = max(maxDist, distToSol);
 		frontier.pop();
 
 		// 1.) Add the checksum of the state to database along with its distance 
@@ -77,6 +73,5 @@ PatternDatabase3x3 PatternDatabaseGenerator::generate3x3PatternDatabase() const
 		}
 	} // end while(frontier.empty() == true)
 	
-	cout << maxDist << '\n';
 	return database;
 }
