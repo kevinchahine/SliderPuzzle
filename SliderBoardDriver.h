@@ -15,5 +15,9 @@ public:
 	int largeBoard();
 
 	int testShift();
+
+	int isSolved();
+
 };
+
 

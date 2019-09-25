@@ -90,6 +90,9 @@
     <ClCompile Include="PatternDatabaseGenerator.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
+    <ClCompile Include="SliderSolver3x3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumDriver.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="PatternDatabaseGenerator.h">
       <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderSolver3x3.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

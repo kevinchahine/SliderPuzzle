@@ -93,3 +93,16 @@ int SliderBoardDriver::testShift()
 
 	return 0;
 }
+
+int SliderBoardDriver::isSolved()
+{
+	SliderBoard board(3, 3);
+	board.print();
+	cout << (board.isSolved() ? "Solved" : "Not Solved") << '\n';
+
+	board.slideDownSafe();
+	board.print();
+	cout << (board.isSolved() ? "Solved" : "Not Solved") << '\n';
+
+	return 0;
+}

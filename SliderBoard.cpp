@@ -39,6 +39,21 @@ void SliderBoard::assign(const SliderBoard & board)
 	this->spaceCoordinate = board.spaceCoordinate;
 }
 
+bool SliderBoard::isSolved() const
+{
+	// Iterate through the board tile by tile
+	for (size_t i = 0; i < this->getNElements(); i++) {
+		// If the tile has the same value as the index,
+		// Then that tile is in the correct place.
+		if (this->at(i) != i) {
+			// We found a missed placed tile
+			return false;
+		}
+	}
+
+	return true;
+}
+
 bool SliderBoard::isSlideUpValid() const
 {
 	return this->spaceCoordinate.row() > 0;

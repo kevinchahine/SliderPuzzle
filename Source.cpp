@@ -8,6 +8,14 @@
 
 #include "PatternDatabaseGenerator.h"
 
+// Solvers
+#include "SliderSolver.h"
+#include "SliderSolver3x3.h"
+
+// Slide Sequences
+#include "FastSlideSequence.h"
+#include "SafeSlideSequence.h"
+
 // Include Drivers for testing
 #include "ChecksumDriver.h"
 #include "MatrixDriver.h"
@@ -31,6 +39,7 @@ int main()
 	//s.testChecksum();
 	//s.largeBoard();
 	//s.shift();
+	//s.isSolved();
 
 	//SliderBoard slider;
 	//shuffle(slider, 10);
@@ -51,8 +60,15 @@ int main()
 	//patternDatabaseDriver.testReadWrite3x3();
 	//patternDatabaseDriver.testReadWrite4x4();
 
-	PatternDatabaseGenerator patternGenerator;
-	PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
-	cout << "size = " << database.size() << '\n';
+	//PatternDatabaseGenerator patternGenerator;
+	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
+	//cout << "size = " << database.size() << '\n';
+
+	SliderBoard board(3, 3);
+	board.shuffle();
+
+	SliderSolver3x3 solver3x3;
+	FastSlideSequence solution = solver3x3.solve(board);
+
 	return 0;
 }

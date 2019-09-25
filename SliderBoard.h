@@ -26,6 +26,13 @@ public:
 
 	void assign(const SliderBoard & board);
 
+	// Returns true iff the tiles of the board are in ascending order from 
+	//	left to right, up to down with zero in the lower 
+	//	ex: 0 1 2
+	//		3 4 5
+	//		6 7 8
+	bool isSolved() const;
+
 	bool isSlideUpValid() const;
 	bool isSlideDownValid() const;
 	bool isSlideLeftValid() const;
