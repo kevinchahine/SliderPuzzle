@@ -32,6 +32,9 @@ string database4x4FileName = "database4x4.dat";
 
 int main()
 {
+	Coordinate c(4, 3);
+	c.toCoordinate();
+
 	//MatrixDriver m;
 	//m.test();
 	//m.testAssign();
@@ -44,7 +47,7 @@ int main()
 	//s.shift();
 	//s.isSolved();
 
-	PatternDatabase3x3 database3x3;
+	//PatternDatabase3x3 database3x3;
 
 	// ===== GENERATES PATTERN DATABASE 3X3 =====
 	//PatternDatabaseGenerator patternDatabaseGenerator;
@@ -56,8 +59,8 @@ int main()
 	//database3x3.writeToFile(outFile);
 
 	// ===== READ PATTERN DATABASE 3X3 FROM FILE =====
-	ifstream inFile(database3x3FileName);
-	database3x3.readFromFile(inFile);
+	//ifstream inFile(database3x3FileName);
+	//database3x3.readFromFile(inFile);
 
 	//SliderBoard slider;
 	//shuffle(slider, 10);
@@ -74,10 +77,10 @@ int main()
 	//checksumDriver.test4x4Checksum();
 	//checksumDriver.test3x3Checksum();
 	
-	PatternDatabaseDriver patternDatabaseDriver;
+	//PatternDatabaseDriver patternDatabaseDriver;
 	//patternDatabaseDriver.testReadWrite3x3();
 	//patternDatabaseDriver.testReadWrite4x4();
-	patternDatabaseDriver.testDistanceToSolution3x3(database3x3);
+	//patternDatabaseDriver.testDistanceToSolution3x3(database3x3);
 
 	//PatternDatabaseGenerator patternGenerator;
 	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();

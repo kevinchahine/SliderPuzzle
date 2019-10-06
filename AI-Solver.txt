@@ -19,6 +19,9 @@ Heuristic 3: Linear Conflict
 	of tj is to the left of the goal position of tk.
 
 Heuristic 4: Pattern Database (Probably the fastest method)
-	Create a database of states and their distance to the goal.
+	Create a database of states and their distance to the goal by starting
+	with a solved board, making every possible move until each state is
+	reached, and saving the number of moves to reach that state from the
+	solution. 
 
 

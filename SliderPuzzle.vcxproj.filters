@@ -91,7 +91,7 @@
       <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="SliderSolver3x3.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +162,7 @@
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolver3x3.h">
-      <Filter>Header Files</Filter>
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

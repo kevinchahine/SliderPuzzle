@@ -5,8 +5,13 @@
 class Coordinate : protected std::pair<size_t, size_t>
 {
 public:
-	Coordinate(size_t row, size_t col) : std::pair<size_t, size_t>(row, col) {}
+	Coordinate(size_t row, size_t col);
+	Coordinate(const Coordinate & coord);
+	Coordinate(Coordinate && coord) noexcept;
 	~Coordinate() {}
+
+	Coordinate & operator=(const Coordinate & coord);
+	Coordinate & operator=(Coordinate && coord) noexcept;
 
 	size_t & row()
 	{
@@ -27,5 +32,8 @@ public:
 	{
 		return this->second;
 	}
+
+	// remove this
+	Coordinate toCoordinate();
 };
 

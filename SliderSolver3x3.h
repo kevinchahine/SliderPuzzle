@@ -9,6 +9,5 @@ public:
 	~SliderSolver3x3();
 
 	virtual FastSlideSequence solve(const SliderBoard & board);
-
 };
 
