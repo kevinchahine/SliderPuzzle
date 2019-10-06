@@ -9,6 +9,16 @@ Checksum4x4::Checksum4x4(uint64_t checksum) :
 {
 }
 
+Checksum4x4::Checksum4x4(const Checksum4x4 & checksum4x4) :
+	Checksum<uint64_t>(checksum4x4)
+{
+}
+
+Checksum4x4::Checksum4x4(const Checksum4x4 && checksum4x4) noexcept :
+	Checksum<uint64_t>(std::move(checksum4x4))
+{
+}
+
 Checksum4x4::Checksum4x4(const SliderBoard & board)
 {
 	setChecksum(board);
@@ -47,15 +57,9 @@ void Checksum4x4::setChecksum(const SliderBoard & board)
 	this->checksum = tempChecksum;
 }
 
-void Checksum4x4::calcSliderBoard(SliderBoard & board) const
+SliderBoard Checksum4x4::toSliderBoard() const
 {
-#if _DEBUG
-	if (board.getNRows() != 4 || board.getNCols() != 4) {
-		cerr << __FILE__ << " line " << __LINE__ << '\n'
-			<< "exception: SliderBoard has a size other than 4x4\n";
-		return;
-	}
-#endif
+	SliderBoard board;
 
 	register uint64_t tempChecksum = this->checksum;
 
@@ -67,6 +71,8 @@ void Checksum4x4::calcSliderBoard(SliderBoard & board) const
 
 		tempChecksum >>= 4;
 	}
+
+	return board;
 }
 
 bool Checksum4x4::operator<(const Checksum4x4 & right) const

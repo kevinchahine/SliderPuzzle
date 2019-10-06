@@ -27,9 +27,7 @@ void ChecksumDriver::test4x4Checksum()
 
 	cout << check << '\n';
 
-	SliderBoard b(4, 4);
-
-	check.calcSliderBoard(b);
+	SliderBoard b = check.toSliderBoard();
 
 	board.print();
 }
