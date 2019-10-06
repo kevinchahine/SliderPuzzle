@@ -32,9 +32,6 @@ string database4x4FileName = "database4x4.dat";
 
 int main()
 {
-	Coordinate c(4, 3);
-	c.toCoordinate();
-
 	//MatrixDriver m;
 	//m.test();
 	//m.testAssign();
