@@ -5,13 +5,39 @@
 using namespace std;
 
 Checksum3x3::Checksum3x3(uint32_t checksum) :
-	Checksum(checksum)
+	Checksum<uint32_t>(checksum)
 {
 }
 
 Checksum3x3::Checksum3x3(const SliderBoard & board)
 {
 	setChecksum(board);
+}
+
+Checksum3x3::Checksum3x3(const Checksum3x3 & checksum3x3) :
+	Checksum<uint32_t>(checksum3x3)
+{
+}
+
+Checksum3x3::Checksum3x3(Checksum3x3 && checksum3x3) noexcept :
+	Checksum<uint32_t>(std::move(checksum3x3))
+{
+}
+
+Checksum3x3 & Checksum3x3::operator=(const Checksum3x3 & checksum3x3)
+{
+	static_cast<Checksum<uint32_t>>(*this) = 
+		static_cast<Checksum<uint32_t>>(checksum3x3);
+
+	return *this;
+}
+
+Checksum3x3 & Checksum3x3::operator=(Checksum3x3 && checksum3x3) noexcept
+{
+	static_cast<Checksum<uint32_t>>(*this) =
+		std::move(static_cast<Checksum<uint32_t>>(checksum3x3));
+
+	return *this;
 }
 
 void Checksum3x3::setChecksum(const SliderBoard & board)
@@ -35,15 +61,10 @@ void Checksum3x3::setChecksum(const SliderBoard & board)
 	this->checksum = tempChecksum;
 }
 
-void Checksum3x3::calcSliderBoard(SliderBoard & board) const
+SliderBoard Checksum3x3::toSliderBoard() const
 {
-#if _DEBUG
-	if (board.getNRows() != 3 || board.getNCols() != 3) {
-		cerr << __FILE__ << " line " << __LINE__ << '\n'
-			<< "exception: SliderBoard has a size other than 3x3\n";
-		return;
-	}
-#endif
+	SliderBoard board(3, 3);
+	
 	uint32_t checksum3x3 = 0;
 	const int N_ELEMENTS = board.getNElements();
 
@@ -59,6 +80,8 @@ void Checksum3x3::calcSliderBoard(SliderBoard & board) const
 
 		board.at(i) = static_cast<uint8_t>(tempA - tempB);
 	}
+
+	return board;
 }
 
 bool Checksum3x3::operator<(const Checksum3x3 & right) const

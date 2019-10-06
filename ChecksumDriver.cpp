@@ -12,8 +12,7 @@ void ChecksumDriver::test3x3Checksum()
 
 	cout << check << '\n';
 
-	SliderBoard b(3, 3);
-	check.calcSliderBoard(b);
+	SliderBoard b = check.toSliderBoard();
 
 	board.print();
 }
