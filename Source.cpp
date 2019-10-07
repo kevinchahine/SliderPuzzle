@@ -22,6 +22,7 @@
 #include "SliderBoardDriver.h"
 #include "SliderUtilityDriver.h"
 #include "PatternDatabaseDriver.h"
+#include "SliderSolverDriver.h"
 
 using namespace std;
 
@@ -43,10 +44,11 @@ int main()
 	//s.largeBoard();
 	//s.shift();
 	//s.isSolved();
-
-	//PatternDatabase3x3 database3x3;
+	//s.methodPointers();
 
 	// ===== GENERATES PATTERN DATABASE 3X3 =====
+	PatternDatabase3x3 database3x3;
+	
 	//PatternDatabaseGenerator patternDatabaseGenerator;
 	//database3x3(
 	//	patternDatabaseGenerator.generate3x3PatternDatabase());
@@ -56,18 +58,12 @@ int main()
 	//database3x3.writeToFile(outFile);
 
 	// ===== READ PATTERN DATABASE 3X3 FROM FILE =====
-	//ifstream inFile(database3x3FileName);
-	//database3x3.readFromFile(inFile);
+	ifstream inFile(database3x3FileName);
+	database3x3.readFromFile(inFile);
 
 	//SliderBoard slider;
 	//shuffle(slider, 10);
 
-	//bool (SliderBoard::*slidePtr)() = &SliderBoard::slideDownSafe;
-	//SafeSlide_T slide = SliderBoard::slideDownSafe;
-	//(slider.*slidePtr)();
-
-	//slider.print();
-	
 	//SliderUtilityDriver::testShift64();
 
 	//ChecksumDriver checksumDriver;
@@ -83,11 +79,8 @@ int main()
 	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
 	//cout << "size = " << database.size() << '\n';
 
-	//SliderBoard board(3, 3);
-	//board.shuffle();
-	//
-	//SliderSolver3x3 solver3x3;
-	//FastSlideSequence solution = solver3x3.solve(board);
+	SliderSolverDriver solverDriver;
+	solverDriver.solve3x3(database3x3);
 
 	return 0;
 }

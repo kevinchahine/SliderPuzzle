@@ -136,10 +136,12 @@
     <ClCompile Include="PatternDatabaseDriver.cpp" />
     <ClCompile Include="PatternDatabaseGenerator.cpp" />
     <ClCompile Include="SafeSlideSequence.cpp" />
+    <ClCompile Include="Slide.cpp" />
     <ClCompile Include="SliderBoard.cpp" />
     <ClCompile Include="SliderBoardDriver.cpp" />
     <ClCompile Include="SliderSolver.cpp" />
     <ClCompile Include="SliderSolver3x3.cpp" />
+    <ClCompile Include="SliderSolverDriver.cpp" />
     <ClCompile Include="SliderUtility.cpp" />
     <ClCompile Include="SliderUtilityDriver.cpp" />
     <ClCompile Include="SlideSequence.cpp" />
@@ -166,6 +168,7 @@
     <ClInclude Include="SliderBoardDriver.h" />
     <ClInclude Include="SliderSolver.h" />
     <ClInclude Include="SliderSolver3x3.h" />
+    <ClInclude Include="SliderSolverDriver.h" />
     <ClInclude Include="SliderUtility.h" />
     <ClInclude Include="SliderUtilityDriver.h" />
     <ClInclude Include="SlideSequence.h" />

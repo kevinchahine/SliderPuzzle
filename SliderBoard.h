@@ -8,6 +8,7 @@
 #include "Coordinate.h"
 #include "Matrix.h"
 #include "SliderUtility.h"
+#include "Slide.h"
 
 extern std::default_random_engine generator;
 
@@ -37,16 +38,19 @@ public:
 	bool isSlideDownValid() const;
 	bool isSlideLeftValid() const;
 	bool isSlideRightValid() const;
+	//bool isSlideValid() const;
 
 	bool slideUpSafe();
 	bool slideDownSafe();
 	bool slideLeftSafe();
 	bool slideRightSafe();
+	bool slideSafe(Slide_T slide);
 
 	inline void slideUpFast();
 	inline void slideDownFast();
 	inline void slideLeftFast();
 	inline void slideRightFast();
+	void slideFast(Slide_T slide);
 
 	void shuffle();
 

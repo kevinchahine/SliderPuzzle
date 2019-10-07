@@ -106,3 +106,18 @@ int SliderBoardDriver::isSolved()
 
 	return 0;
 }
+
+int SliderBoardDriver::methodPointers()
+{
+	SliderBoard board(3, 3);
+
+	board.print();
+
+	typedef bool (SliderBoard:: * SlidePtr_T)();
+	SlidePtr_T memPtr = &SliderBoard::slideDownSafe;
+	(board.*memPtr)();
+
+	board.print();
+
+	return 0;
+}

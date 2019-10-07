@@ -2,6 +2,7 @@
 
 #include "SliderBoard.h"
 #include "SliderUtility.h"
+#include "Slide.h"
 
 class SliderBoardDriver
 {
@@ -18,6 +19,7 @@ public:
 
 	int isSolved();
 
+	int methodPointers();
 };
 
 

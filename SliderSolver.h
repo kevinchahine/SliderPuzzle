@@ -5,6 +5,7 @@
 #include <vector>
 #include <deque>
 
+#include "Slide.h"
 #include "SliderBoard.h"
 #include "SlideSequence.h"
 #include "FastSlideSequence.h"
@@ -12,12 +13,12 @@
 class SliderSolver
 {
 public:
-	SliderSolver();
+	SliderSolver(const SliderBoard & board);
 	~SliderSolver();
 
-	virtual FastSlideSequence solve(const SliderBoard & board) = 0;
+	virtual FastSlideSequence solve() = 0;
 
 protected:
-
+	SliderBoard board;
 };
 

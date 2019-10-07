@@ -122,6 +122,23 @@ bool SliderBoard::slideRightSafe()
 	}
 }
 
+bool SliderBoard::slideSafe(Slide_T slide)
+{
+	switch (slide)
+	{
+	case Slide_T::UP:		return slideUpSafe();	
+	case Slide_T::DOWN:		return slideDownSafe();
+	case Slide_T::LEFT:		return slideLeftSafe();
+	case Slide_T::RIGHT:	return slideRightSafe();
+	default:
+		cerr << "error: " << __FILE__ << " line " << __LINE__
+			<< " default case triggered slide = "
+			<< static_cast<char>(slide) << '\n';
+		
+		return false;
+	}
+}
+
 void SliderBoard::slideUpFast()
 {
 	size_t col = spaceCoordinate.col();
@@ -174,6 +191,17 @@ void SliderBoard::slideRightFast()
 	b = temp;
 
 	spaceCoordinate.col()++;
+}
+
+void SliderBoard::slideFast(Slide_T slide)
+{
+	switch (slide)
+	{
+	case Slide_T::UP:		return slideUpFast();
+	case Slide_T::DOWN:		return slideDownFast();
+	case Slide_T::LEFT:		return slideLeftFast();
+	case Slide_T::RIGHT:	return slideRightFast();
+	}
 }
 
 void SliderBoard::shuffle()

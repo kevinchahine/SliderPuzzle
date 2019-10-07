@@ -93,6 +93,12 @@
     <ClCompile Include="SliderSolver3x3.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
+    <ClCompile Include="SliderSolverDriver.cpp">
+      <Filter>TestDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Slide.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumDriver.h">
@@ -163,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="SliderSolver3x3.h">
       <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderSolverDriver.h">
+      <Filter>TestDrivers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
