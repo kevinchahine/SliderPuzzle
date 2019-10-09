@@ -4,6 +4,8 @@ using namespace std;
 
 int SliderSolverDriver::solve3x3(const PatternDatabase3x3 & database)
 {
+	cout << "Shuffling board\n";
+
 	SliderBoard board;
 	board.shuffle();
 	board.shuffle();
@@ -16,14 +18,21 @@ int SliderSolverDriver::solve3x3(const PatternDatabase3x3 & database)
 
 	cout << "Solving puzzle:\n";
 
+	clock_t startTime;
+	clock_t endTime;
+
+	startTime = clock();
+
 	FastSlideSequence solutionSequence = solver.solve();
-	cout << "Solution size is " << solutionSequence.size() << '\n';
+
+	endTime = clock();
 
 	cout << "puzzle is solved: Here is the solution sequence\n";
 	solutionSequence.print();
 
-	cout << "Press any key to continue";
-	cin.get();
+	cout << "Solution size is " << solutionSequence.size() << '\n';
+	cout << "Solution time: " << setprecision(6) << (endTime - startTime) / 1000.0 << " sec\n";
+
 	return 0;
 }
 

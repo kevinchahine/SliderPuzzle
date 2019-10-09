@@ -34,8 +34,7 @@ Checksum3x3 & Checksum3x3::operator=(const Checksum3x3 & checksum3x3)
 
 Checksum3x3 & Checksum3x3::operator=(Checksum3x3 && checksum3x3) noexcept
 {
-	static_cast<Checksum<uint32_t>>(*this) =
-		std::move(static_cast<Checksum<uint32_t>>(checksum3x3));
+	std::swap((*this), checksum3x3);
 
 	return *this;
 }

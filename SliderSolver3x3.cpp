@@ -24,55 +24,54 @@ FastSlideSequence SliderSolver3x3::solve()
 		// No, return an empty solution
 		cerr << "error: " << __FILE__ << " line " << __LINE__
 			<< " patternDatabase3x3Ptr = nullptr\n";
+
+		// Return an empty solution sequence
 		return FastSlideSequence();
 	}
+
+	// Does the data base contain anything?
 	if (patternDatabase3x3Ptr->empty() == true) {
 		cerr << "error: " << __FILE__ << " line " << __LINE__
 			<< " database is empty\n";
 
+		// Return an empty solution sequence
 		return FastSlideSequence();
 	}
 
-	// else Yes, we have a database
+	// Now we know that we have a non-empty database.
 	const PatternDatabase3x3 & database = *patternDatabase3x3Ptr;
 
+	// Can this board even be solved? 
+	// The database contains all the states that are reachable from shuffling a 
+	// solved board. If a state is not in this database, then the board cannot 
+	// be solved. This could happen if the pieces on the board where placed 
+	// randomly (and not shuffled by making valid moves) or this board is part 
+	// of a larger board that is only partially solved.
+
+	// Declare the solution sequence. This will keep track of all the moves that 
+	// we make to solve the board.
 	// Reserve enough space in the SliderSequence for 32 slides.
 	// The longest a 3x3 slider puzzle should take to solve is 32 slides.
 	FastSlideSequence sequence(32);
 	
-	PatternDatabase3x3::const_iterator it;
-
+	// Run through hill climb algorithm until we reach the solution.
 	while (!board.isSolved())
 	{
-		// ======== Show analytics ==============
-
-		board.print();
-		cout << "\tDistance to solution: ";
-
-		PatternDatabase3x3::const_iterator distToSolIter =
-			database.find(Checksum3x3(board));
-
-		if (distToSolIter == database.end()) {
-			cerr << __FILE__ << " line " << __LINE__
-				<< "board cannot be solved\n";
-			return sequence;
-		}
-
-		cout << distToSolIter->second << '\n';
-
 		// -------- Analyze future moves --------
-
+		// Try every valid move, and see which one brings us closer to the 
+		// solution.
 		uint16_t minDist = UINT16_MAX;
 		Slide_T minMove = Slide_T::NONE;
 
-		// --- UP
-		cout << setw(7) << "UP: ";
+		// --- UP ---
 		if (board.isSlideUpValid() == true)
 		{
 			board.slideUpFast();
-			uint16_t temp = database.find(Checksum3x3(board))->second;
-			cout << temp << '\n';
 
+			// If we move UP, how far would we be from solution?
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+
+			// Is that the best so far?
 			if (temp < minDist) {
 				minDist = temp;
 				minMove = Slide_T::UP;
@@ -80,16 +79,16 @@ FastSlideSequence SliderSolver3x3::solve()
 
 			board.slideDownFast();
 		}
-		else cout << "not valid\n";
 
-		// --- DOWN
-		cout << setw(7) << "DOWN: ";
+		// --- DOWN ---
 		if (board.isSlideDownValid() == true)
 		{
 			board.slideDownFast();
-			uint16_t temp = database.find(Checksum3x3(board))->second;
-			cout << temp << '\n';
 
+			// If we move DOWN, how far would we be from solution.
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+
+			// Is that the best so far
 			if (temp < minDist) {
 				minDist = temp;
 				minMove = Slide_T::DOWN;
@@ -97,16 +96,16 @@ FastSlideSequence SliderSolver3x3::solve()
 
 			board.slideUpFast();
 		}
-		else cout << "not valid\n";
 
-		// --- LEFT
-		cout << setw(7) << "LEFT: ";
+		// --- LEFT ---
 		if (board.isSlideLeftValid() == true)
 		{
 			board.slideLeftFast();
-			uint16_t temp = database.find(Checksum3x3(board))->second;
-			cout << temp << '\n';
 
+			// If we move LEFT, how far would we be from solution.
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+
+			// Is that the best so far
 			if (temp < minDist) {
 				minDist = temp;
 				minMove = Slide_T::LEFT;
@@ -114,16 +113,16 @@ FastSlideSequence SliderSolver3x3::solve()
 
 			board.slideRightFast();
 		}
-		else cout << "not valid\n";
 
-		// --- RIGHT
-		cout << setw(7) << "RIGHT: ";
+		// --- RIGHT ---
 		if (board.isSlideRightValid() == true)
 		{
 			board.slideRightFast();
+			
+			// If we move RIGHT, how far would we be from solution.
 			uint16_t temp = database.find(Checksum3x3(board))->second;
-			cout << temp << '\n';
 
+			// Is that the best so far
 			if (temp < minDist) {
 				minDist = temp;
 				minMove = Slide_T::RIGHT;
@@ -131,18 +130,15 @@ FastSlideSequence SliderSolver3x3::solve()
 
 			board.slideLeftFast();
 		}
-		else cout << "not valid\n";
 
-		// Push the slide to the solution sequence
+		// Now we know what the next best move is (minMove).
+
+		// Keep track of the slide in the solution sequence
 		sequence.push_back(minMove);
 
-		// Apply the slide
+		// Apply the move
 		board.slideSafe(minMove);
 	}
-
-	board.print();
-
-	cout << "\n====== Board is solved ==========\n\n\n";
 
 	// Return the solution sequence
 	return sequence;
