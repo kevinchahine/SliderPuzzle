@@ -129,11 +129,13 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			case 'd':	slide = Slide_T::RIGHT;	break;
 			}
 			*/
-			cin.get();
 
 			board.slideSafe(minMove);
 		}
 
+		board.print();
+
+		cin.get();
 		cout << "\n====== Board is solved ==========\n\n\n";
 	}
 
