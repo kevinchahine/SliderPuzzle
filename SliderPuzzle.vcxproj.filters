@@ -93,11 +93,11 @@
     <ClCompile Include="SliderSolverDriver.cpp">
       <Filter>TestDrivers</Filter>
     </ClCompile>
-    <ClCompile Include="Slide.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PatternDatabaseGenerator.cpp">
       <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="Slide.cpp">
+      <Filter>Slide</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

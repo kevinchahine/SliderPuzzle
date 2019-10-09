@@ -26,115 +26,123 @@ FastSlideSequence SliderSolver3x3::solve()
 			<< " patternDatabase3x3Ptr = nullptr\n";
 		return FastSlideSequence();
 	}
+	if (patternDatabase3x3Ptr->empty() == true) {
+		cerr << "error: " << __FILE__ << " line " << __LINE__
+			<< " database is empty\n";
+
+		return FastSlideSequence();
+	}
+
 	// else Yes, we have a database
-	
+	const PatternDatabase3x3 & database = *patternDatabase3x3Ptr;
+
 	// Reserve enough space in the SliderSequence for 32 slides.
 	// The longest a 3x3 slider puzzle should take to solve is 32 slides.
 	FastSlideSequence sequence(32);
+	
+	PatternDatabase3x3::const_iterator it;
 
-	// For testing only.
-	// nIterations keeps track of how long our solver took to finish
-	// Should take less than 33 iterations.
-	int nIterations = 0;
+	while (!board.isSolved())
+	{
+		// ======== Show analytics ==============
 
-	// Perform hill climb algorithm until solution is reached
-	// Should not take more than 32 moves for 3x3 board
-	while (!board.isSolved() && nIterations < 33) {
-		// Stores the best movement (or slide) of the ones that
-		// are valid
-		Slide_T bestSlide = Slide_T::NONE;
-
-		// Stores the distance to solution of the state bestSlide will
-		// take us to.
-		uint16_t bestSlideDist = UINT16_MAX;
-
-		// 1.) What are our possible slides (aka moves)
-
-		// 1-UP.) Analyze Slide UP
-		if (board.isSlideUpValid()) {
-			// 1-1.) If we where to  make this move what would the distance
-			//		to the solution be.
-			uint16_t tempDist = this->calcDistToSolution(Slide_T::UP);
-
-			// 1-2.) Was this move better than the previous one
-			if (tempDist < bestSlideDist) {
-				// Yes. Slide UP is the best so far.
-				bestSlide = Slide_T::UP;
-				
-				// Move down the benchmark
-				bestSlideDist = tempDist;
-			}
-		}
-
-		// 1-UP.) Analyze Slide DOWN
-		if (board.isSlideDownValid()) {
-			// 1-1.) If we where to  make this move what would the distance
-			//		to the solution be.
-			uint16_t tempDist = this->calcDistToSolution(Slide_T::DOWN);
-
-			// 1-2.) Was this move better than the previous one
-			if (tempDist < bestSlideDist) {
-				// Yes. Slide UP is the best so far.
-				bestSlide = Slide_T::DOWN;
-
-				// Move down the benchmark
-				bestSlideDist = tempDist;
-			}
-		}
-
-		// 1-LEFT.) Analyze Slide LEFT
-		if (board.isSlideUpValid()) {
-			// 1-1.) If we where to  make this move what would the distance
-			//		to the solution be.
-			uint16_t tempDist = this->calcDistToSolution(Slide_T::LEFT);
-
-			// 1-2.) Was this move better than the previous one
-			if (tempDist < bestSlideDist) {
-				// Yes. Slide UP is the best so far.
-				bestSlide = Slide_T::LEFT;
-
-				// Move down the benchmark
-				bestSlideDist = tempDist;
-			}
-		}
-
-		// 1-RIGHT.) Analyze Slide RIGHT
-		if (board.isSlideUpValid()) {
-			// 1-1.) If we where to  make this move what would the distance
-			//		to the solution be.
-			uint16_t tempDist = this->calcDistToSolution(Slide_T::RIGHT);
-
-			// 1-2.) Was this move better than the previous one
-			if (tempDist < bestSlideDist) {
-				// Yes. Slide RIGHT is the best so far.
-				bestSlide = Slide_T::RIGHT;
-
-				// Move down the benchmark
-				bestSlideDist = tempDist;
-			}
-		}
-
-		// Now we know what the next best slide is.
-
-		// 2.) Make that slide
-		//if (this->board.slideSafe(bestSlide) == false)
-		//{
-		//	cerr << "Slide is not valid" << endl;
-		//}
-		board.slideSafe(bestSlide);
-
-		// 3.) Push that slide to solution sequence
-		sequence.push_back(bestSlide);
-		
-		cout << "Move " << bestSlide << '\n';
 		board.print();
-		cin.get();
+		cout << "\tDistance to solution: ";
 
-		// 4.) Keep track of iterations incase we run into an infinite loop
-		nIterations++;
+		PatternDatabase3x3::const_iterator distToSolIter =
+			database.find(Checksum3x3(board));
 
-		// And keep going till board is solved
+		if (distToSolIter == database.end()) {
+			cerr << __FILE__ << " line " << __LINE__
+				<< "board cannot be solved\n";
+			return sequence;
+		}
+
+		cout << distToSolIter->second << '\n';
+
+		// -------- Analyze future moves --------
+
+		uint16_t minDist = UINT16_MAX;
+		Slide_T minMove = Slide_T::NONE;
+
+		// --- UP
+		cout << setw(7) << "UP: ";
+		if (board.isSlideUpValid() == true)
+		{
+			board.slideUpFast();
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+			cout << temp << '\n';
+
+			if (temp < minDist) {
+				minDist = temp;
+				minMove = Slide_T::UP;
+			}
+
+			board.slideDownFast();
+		}
+		else cout << "not valid\n";
+
+		// --- DOWN
+		cout << setw(7) << "DOWN: ";
+		if (board.isSlideDownValid() == true)
+		{
+			board.slideDownFast();
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+			cout << temp << '\n';
+
+			if (temp < minDist) {
+				minDist = temp;
+				minMove = Slide_T::DOWN;
+			}
+
+			board.slideUpFast();
+		}
+		else cout << "not valid\n";
+
+		// --- LEFT
+		cout << setw(7) << "LEFT: ";
+		if (board.isSlideLeftValid() == true)
+		{
+			board.slideLeftFast();
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+			cout << temp << '\n';
+
+			if (temp < minDist) {
+				minDist = temp;
+				minMove = Slide_T::LEFT;
+			}
+
+			board.slideRightFast();
+		}
+		else cout << "not valid\n";
+
+		// --- RIGHT
+		cout << setw(7) << "RIGHT: ";
+		if (board.isSlideRightValid() == true)
+		{
+			board.slideRightFast();
+			uint16_t temp = database.find(Checksum3x3(board))->second;
+			cout << temp << '\n';
+
+			if (temp < minDist) {
+				minDist = temp;
+				minMove = Slide_T::RIGHT;
+			}
+
+			board.slideLeftFast();
+		}
+		else cout << "not valid\n";
+
+		// Push the slide to the solution sequence
+		sequence.push_back(minMove);
+
+		// Apply the slide
+		board.slideSafe(minMove);
 	}
+
+	board.print();
+
+	cout << "\n====== Board is solved ==========\n\n\n";
 
 	// Return the solution sequence
 	return sequence;

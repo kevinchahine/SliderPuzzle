@@ -2,6 +2,8 @@
 
 #include "Slide.h"
 
+#include <iostream>
+#include <iomanip>
 #include <vector>
 
 template <typename T>
@@ -10,7 +12,6 @@ class SlideSequence : public std::vector<T>
 public:
 	SlideSequence(size_t capacity = 0);
 	~SlideSequence();
-
 };
 
 template<typename T>

@@ -6,13 +6,24 @@ int SliderSolverDriver::solve3x3(const PatternDatabase3x3 & database)
 {
 	SliderBoard board;
 	board.shuffle();
+	board.shuffle();
+	board.shuffle();
+	board.shuffle();
 	board.print();
 
 	SliderSolver3x3 solver(board);
 	solver.setDatabasePtr(&database);
 
+	cout << "Solving puzzle:\n";
+
 	FastSlideSequence solutionSequence = solver.solve();
-	   
+	cout << "Solution size is " << solutionSequence.size() << '\n';
+
+	cout << "puzzle is solved: Here is the solution sequence\n";
+	solutionSequence.print();
+
+	cout << "Press any key to continue";
+	cin.get();
 	return 0;
 }
 
@@ -129,13 +140,14 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			case 'd':	slide = Slide_T::RIGHT;	break;
 			}
 			*/
+			
+			cin.get();
 
 			board.slideSafe(minMove);
 		}
 
 		board.print();
 
-		cin.get();
 		cout << "\n====== Board is solved ==========\n\n\n";
 	}
 

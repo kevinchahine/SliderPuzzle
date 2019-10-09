@@ -80,8 +80,8 @@ int main()
 	//cout << "size = " << database.size() << '\n';
 
 	SliderSolverDriver solverDriver;
-	//solverDriver.solve3x3(database3x3);
-	solverDriver.manualHillClimb3x3(database3x3);
+	solverDriver.solve3x3(database3x3);
+	//solverDriver.manualHillClimb3x3(database3x3);
 
 	return 0;
 }
