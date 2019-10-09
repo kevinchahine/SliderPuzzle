@@ -87,9 +87,6 @@
     <ClCompile Include="PatternDatabase4x4.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
-    <ClCompile Include="PatternDatabaseGenerator.cpp">
-      <Filter>Solver</Filter>
-    </ClCompile>
     <ClCompile Include="SliderSolver3x3.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
@@ -98,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="Slide.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabaseGenerator.cpp">
+      <Filter>Solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,14 +164,14 @@
     <ClInclude Include="PatternDatabase4x4.h">
       <Filter>Solver</Filter>
     </ClInclude>
-    <ClInclude Include="PatternDatabaseGenerator.h">
-      <Filter>Solver</Filter>
-    </ClInclude>
     <ClInclude Include="SliderSolver3x3.h">
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolverDriver.h">
       <Filter>TestDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabaseGenerator.h">
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
