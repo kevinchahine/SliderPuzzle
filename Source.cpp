@@ -58,17 +58,17 @@ int main()
 	//database3x3.writeToFile(outFile);
 
 	// ===== READ PATTERN DATABASE 3X3 FROM FILE =====
-	ifstream inFile(database3x3FileName);
-	database3x3.readFromFile(inFile);
+	//ifstream inFile(database3x3FileName);
+	//database3x3.readFromFile(inFile);
 
 	//SliderBoard slider;
 	//shuffle(slider, 10);
 
 	//SliderUtilityDriver::testShift64();
 
-	//ChecksumDriver checksumDriver;
-	//checksumDriver.test4x4Checksum();
-	//checksumDriver.test3x3Checksum();
+	ChecksumDriver checksumDriver;
+	checksumDriver.test4x4Checksum();
+	checksumDriver.test3x3Checksum();
 	
 	//PatternDatabaseDriver patternDatabaseDriver;
 	//patternDatabaseDriver.testReadWrite3x3();
@@ -79,8 +79,8 @@ int main()
 	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
 	//cout << "size = " << database.size() << '\n';
 
-	SliderSolverDriver solverDriver;
-	solverDriver.solve3x3(database3x3);
+	//SliderSolverDriver solverDriver;
+	//solverDriver.solve3x3(database3x3);
 	//solverDriver.manualHillClimb3x3(database3x3);
 
 	return 0;

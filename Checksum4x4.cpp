@@ -4,8 +4,8 @@
 
 using namespace std;
 
-Checksum4x4::Checksum4x4(uint64_t checksum) :
-	Checksum(checksum)
+Checksum4x4::Checksum4x4(uint64_t checksumVal) :
+	Checksum(checksumVal)
 {
 }
 
@@ -21,10 +21,10 @@ Checksum4x4::Checksum4x4(const Checksum4x4 && checksum4x4) noexcept :
 
 Checksum4x4::Checksum4x4(const SliderBoard & board)
 {
-	setChecksum(board);
+	calcChecksum(board);
 }
 
-void Checksum4x4::setChecksum(const SliderBoard & board)
+void Checksum4x4::calcChecksum(const SliderBoard & board)
 {
 	#if _DEBUG
 	if (board.getNRows() != 4 || board.getNCols() != 4) {
@@ -54,14 +54,14 @@ void Checksum4x4::setChecksum(const SliderBoard & board)
 
 	tempChecksum = tempChecksum | board.at(0);
 
-	this->checksum = tempChecksum;
+	this->checksumVal = tempChecksum;
 }
 
 SliderBoard Checksum4x4::toSliderBoard() const
 {
 	SliderBoard board;
 
-	register uint64_t tempChecksum = this->checksum;
+	register uint64_t tempChecksum = this->checksumVal;
 
 	for (size_t cellIndex = 0; cellIndex < board.size(); cellIndex++)
 	{
@@ -73,14 +73,4 @@ SliderBoard Checksum4x4::toSliderBoard() const
 	}
 
 	return board;
-}
-
-bool Checksum4x4::operator<(const Checksum4x4 & right) const
-{
-	return this->checksum < right.checksum;
-}
-
-bool Checksum4x4::operator==(const Checksum4x4 & right) const
-{
-	return this->checksum == right.checksum;
 }

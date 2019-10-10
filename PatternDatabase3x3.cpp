@@ -28,12 +28,12 @@ void PatternDatabase3x3::readFromFile(std::ifstream & inFile)
 	// Make sure we didn't reach the end of the file
 	while (!inFile.eof())
 	{
-		uint32_t checksum;
+		uint32_t checksumVal;
 		uint16_t distance;
 
-		inFile >> checksum;
+		inFile >> checksumVal;
 		inFile >> distance;
 
-		this->insert(pair<Checksum3x3, uint16_t>(Checksum3x3(checksum), distance));
+		this->insert(pair<Checksum3x3, uint16_t>(Checksum3x3(checksumVal), distance));
 	}
 }

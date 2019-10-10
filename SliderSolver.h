@@ -10,6 +10,8 @@
 #include "SlideSequence.h"
 #include "FastSlideSequence.h"
 
+#include "PatternDatabase.h"
+
 class SliderSolver
 {
 public:

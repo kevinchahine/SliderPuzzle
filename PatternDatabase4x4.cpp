@@ -32,12 +32,12 @@ void PatternDatabase4x4::readFromFile(std::ifstream & inFile)
 	// Make sure we didn't reach the end of the file
 	while (!inFile.eof())
 	{
-		uint32_t checksum;
+		uint32_t checksumVal;
 		uint16_t distance;
 
-		inFile >> checksum;
+		inFile >> checksumVal;
 		inFile >> distance;
 
-		this->insert(pair<Checksum4x4, uint16_t>(Checksum4x4(checksum), distance));
+		this->insert(pair<Checksum4x4, uint16_t>(Checksum4x4(checksumVal), distance));
 	}
 }

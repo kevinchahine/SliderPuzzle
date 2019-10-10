@@ -4,14 +4,14 @@
 
 using namespace std;
 
-Checksum3x3::Checksum3x3(uint32_t checksum) :
-	Checksum<uint32_t>(checksum)
+Checksum3x3::Checksum3x3(uint32_t checksumVal) :
+	Checksum<uint32_t>(checksumVal)
 {
 }
 
 Checksum3x3::Checksum3x3(const SliderBoard & board)
 {
-	setChecksum(board);
+	calcChecksum(board);
 }
 
 Checksum3x3::Checksum3x3(const Checksum3x3 & checksum3x3) :
@@ -24,22 +24,7 @@ Checksum3x3::Checksum3x3(Checksum3x3 && checksum3x3) noexcept :
 {
 }
 
-Checksum3x3 & Checksum3x3::operator=(const Checksum3x3 & checksum3x3)
-{
-	static_cast<Checksum<uint32_t>>(*this) = 
-		static_cast<Checksum<uint32_t>>(checksum3x3);
-
-	return *this;
-}
-
-Checksum3x3 & Checksum3x3::operator=(Checksum3x3 && checksum3x3) noexcept
-{
-	std::swap((*this), checksum3x3);
-
-	return *this;
-}
-
-void Checksum3x3::setChecksum(const SliderBoard & board)
+void Checksum3x3::calcChecksum(const SliderBoard & board)
 {
 #if _DEBUG
 	if (board.getNRows() != 3 || board.getNCols() != 3) {
@@ -57,7 +42,7 @@ void Checksum3x3::setChecksum(const SliderBoard & board)
 		tempChecksum += board.at(i) * static_cast<uint32_t>(pow(N_ELEMENTS, i));
 	}
 
-	this->checksum = tempChecksum;
+	this->checksumVal = tempChecksum;
 }
 
 SliderBoard Checksum3x3::toSliderBoard() const
@@ -81,14 +66,4 @@ SliderBoard Checksum3x3::toSliderBoard() const
 	}
 
 	return board;
-}
-
-bool Checksum3x3::operator<(const Checksum3x3 & right) const
-{
-	return this->checksum < right.checksum;
-}
-
-bool Checksum3x3::operator==(const Checksum3x3 & right) const
-{
-	return this->checksum == right.checksum;
 }

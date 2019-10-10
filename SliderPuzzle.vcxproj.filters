@@ -100,7 +100,7 @@
       <Filter>Slide</Filter>
     </ClCompile>
     <ClCompile Include="SliderSolver4x4.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +177,7 @@
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolver4x4.h">
-      <Filter>Header Files</Filter>
+      <Filter>Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
