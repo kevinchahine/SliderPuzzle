@@ -10,8 +10,8 @@ public:
 	PatternDatabase3x3();
 	~PatternDatabase3x3();
 
-	void writeToFile(std::ofstream & outFile) const;
+	virtual void writeToFile(std::ofstream & outFile) const;
 
-	void readFromFile(std::ifstream & inFile);
+	virtual void readFromFile(std::ifstream & inFile);
 };
 

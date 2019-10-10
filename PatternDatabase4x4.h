@@ -10,8 +10,10 @@ public:
 	PatternDatabase4x4();
 	~PatternDatabase4x4();
 
-	void writeToFile(std::ofstream & outFile) const;
 
-	void readFromFile(std::ifstream & inFile);
+
+	virtual void writeToFile(std::ofstream & outFile) const;
+
+	virtual void readFromFile(std::ifstream & inFile);
 };
 

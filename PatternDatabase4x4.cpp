@@ -19,7 +19,7 @@ void PatternDatabase4x4::writeToFile(std::ofstream & outFile) const
 		const pair<Checksum4x4, uint16_t> & node = *it;
 
 		// 1-1.) Checksum 
-		outFile << node.first.getChecksum() << ' ';
+		// TODO: UNCOMMENT outFile << node.first.getChecksum() << ' ';
 
 		// 1-2.) Distance to Solution 
 		outFile << node.second << endl;
@@ -38,6 +38,6 @@ void PatternDatabase4x4::readFromFile(std::ifstream & inFile)
 		inFile >> checksumVal;
 		inFile >> distance;
 
-		this->insert(pair<Checksum4x4, uint16_t>(Checksum4x4(checksumVal), distance));
+		// TODO: UNCOMMENT this->insert(pair<Checksum4x4, uint16_t>(Checksum4x4(checksumVal), distance));
 	}
 }

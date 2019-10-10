@@ -32,7 +32,7 @@ void PatternDatabaseDriver::testReadWrite4x4()
 	ifstream inFile;
 
 	for (uint32_t i = 0; i < 1000; i++) {
-		database.insert(pair<Checksum4x4, uint16_t>(Checksum4x4(i), static_cast<uint16_t>(i)));
+		// TODO: UNCOMMENT database.insert(pair<Checksum4x4, uint16_t>(Checksum4x4(i), static_cast<uint16_t>(i)));
 	}
 
 	outFile.open(database4x4FileName);

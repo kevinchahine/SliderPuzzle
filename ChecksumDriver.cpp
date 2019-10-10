@@ -10,9 +10,9 @@ void ChecksumDriver::test3x3Checksum()
 
 	Checksum3x3 check(board);
 
-	cout << check << '\n';
+	// TODO: UNCOMMENT cout << check << '\n';
 
-	SliderBoard b = check.toSliderBoard();
+	// TODO: UNCOMMENT SliderBoard b = check.toSliderBoard();
 
 	board.print();
 }
@@ -23,11 +23,11 @@ void ChecksumDriver::test4x4Checksum()
 	board.shuffle();
 	board.print();
 
-	Checksum4x4 check(board);
+	// TODO: UNCOMMENT Checksum4x4 check(board);
 
-	cout << check << '\n';
+	// TODO: UNCOMMENT cout << check << '\n';
 
-	SliderBoard b = check.toSliderBoard();
+	// TODO: UNCOMMENT SliderBoard b = check.toSliderBoard();
 
 	board.print();
 }
