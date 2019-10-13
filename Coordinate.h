@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <tuple>
 
 class Coordinate : protected std::pair<size_t, size_t>
@@ -10,8 +11,23 @@ public:
 	Coordinate(Coordinate && coord) noexcept;
 	~Coordinate() {}
 
-	Coordinate & operator=(const Coordinate & coord);
-	Coordinate & operator=(Coordinate && coord) noexcept;
+	Coordinate & operator=(const Coordinate & coord)
+	{
+		this->first = coord.first;
+		this->second = coord.second;
+		
+		return *this;
+	}
+	
+	Coordinate & operator=(Coordinate && coord) noexcept
+	{
+		this->first = coord.first;
+		this->second = coord.second;
+		
+		return *this;
+	}
+	
+	friend std::ostream & operator<<(std::ostream & os, const Coordinate & coordinate);
 
 	size_t & row()
 	{
@@ -33,7 +49,5 @@ public:
 		return this->second;
 	}
 
-	// remove this
-	Coordinate toCoordinate();
 };
 

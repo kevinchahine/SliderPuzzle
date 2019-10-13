@@ -7,7 +7,7 @@ using namespace std;
 
 SliderBoard::SliderBoard() :
 	Matrix<uint8_t>(3, 3),
-	spaceCoordinate(0, 0)
+	posOfEmptySlot(0, 0)
 {
 	for (size_t i = 0; i < this->getNElements(); i++)
 	{
@@ -17,7 +17,7 @@ SliderBoard::SliderBoard() :
 
 SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
 	Matrix<uint8_t>(nRows, nCols),
-	spaceCoordinate(0, 0) 
+	posOfEmptySlot(0, 0) 
 {
 	for (size_t i = 0; i < this->getNElements(); i++) 
 	{
@@ -27,7 +27,7 @@ SliderBoard::SliderBoard(size_t nRows, size_t nCols) :
 
 SliderBoard::SliderBoard(const SliderBoard & sliderBoard) :
 	Matrix<uint8_t>(static_cast<Matrix<uint8_t>>(sliderBoard)),
-	spaceCoordinate(sliderBoard.spaceCoordinate) 
+	posOfEmptySlot(sliderBoard.posOfEmptySlot) 
 {}
 
 SliderBoard::~SliderBoard() {}
@@ -36,7 +36,42 @@ void SliderBoard::assign(const SliderBoard & board)
 {
 	this->Matrix<uint8_t>::assign(board);
 
-	this->spaceCoordinate = board.spaceCoordinate;
+	this->posOfEmptySlot = board.posOfEmptySlot;
+}
+
+void SliderBoard::alignPositionOfEmptySlot()
+{
+	// 1.) Find location of the empty (or zero slot)
+	Matrix<uint8_t>::const_iterator emptySlotItr = 
+		find(this->begin(), this->end(), 0);
+
+	// 2.) Did we find the empty slot or is it missing?
+	if (emptySlotItr == this->end()) {
+		// No we didn't.
+#if _DEBUG
+		cerr << __FILE__ << " line " << __LINE__
+			<< "empty slot not found\n";
+		return;
+	}
+#endif
+	
+	// 3.) align position of empty slot;
+	size_t emptyPos = *emptySlotItr;
+
+	this->posOfEmptySlot = Coordinate(rowCoord(emptyPos), colCoord(emptyPos));
+}
+
+void SliderBoard::alignPositionOfEmptySlot(const Coordinate & emptySlotPosHint)
+{
+	// Is the hint accurate?
+	if (this->at(emptySlotPosHint) == 0) {
+		// Yes. No need to search for it.
+		this->posOfEmptySlot = emptySlotPosHint;
+	}
+	else {
+		// No. We need to align the empty slot ourselves.
+		alignPositionOfEmptySlot();
+	}
 }
 
 bool SliderBoard::isSolved() const
@@ -56,22 +91,22 @@ bool SliderBoard::isSolved() const
 
 bool SliderBoard::isSlideUpValid() const
 {
-	return this->spaceCoordinate.row() > 0;
+	return this->posOfEmptySlot.row() > 0;
 }
 
 bool SliderBoard::isSlideDownValid() const
 {
-	return this->spaceCoordinate.row() < (getNRows() - 1);
+	return this->posOfEmptySlot.row() < (getNRows() - 1);
 }
 
 bool SliderBoard::isSlideLeftValid() const
 {
-	return this->spaceCoordinate.col() > 0;
+	return this->posOfEmptySlot.col() > 0;
 }
 
 bool SliderBoard::isSlideRightValid() const
 {
-	return this->spaceCoordinate.col() < (getNCols() - 1);
+	return this->posOfEmptySlot.col() < (getNCols() - 1);
 }
 
 bool SliderBoard::slideUpSafe()
@@ -141,56 +176,54 @@ bool SliderBoard::slideSafe(Slide_T slide)
 
 void SliderBoard::slideUpFast()
 {
-	size_t col = spaceCoordinate.col();
-	size_t row = spaceCoordinate.row();
+	size_t col = posOfEmptySlot.col();
+	size_t row = posOfEmptySlot.row();
 	uint8_t & a = at(row, col);
 	uint8_t & b = at(row - 1, col);
 
-	uint8_t temp = a;
-	a = b;
-	b = temp;
+	std::swap(a, b);
 
-	spaceCoordinate.row()--;
+	posOfEmptySlot.row()--;
+	;
 }
 
 void SliderBoard::slideDownFast()
 {
-	size_t col = spaceCoordinate.col();
-	size_t row = spaceCoordinate.row();
+	size_t col = posOfEmptySlot.col();
+	size_t row = posOfEmptySlot.row();
 	uint8_t & a = at(row, col);
 	uint8_t & b = at(row + 1, col);
 
-	uint8_t temp = a;
-	a = b;
-	b = temp; spaceCoordinate.row()++;
+	std::swap(a, b);
+	
+	posOfEmptySlot.row()++;
+	;
 }
 
 void SliderBoard::slideLeftFast()
 {
-	size_t col = spaceCoordinate.col();
-	size_t row = spaceCoordinate.row();
+	size_t col = posOfEmptySlot.col();
+	size_t row = posOfEmptySlot.row();
 	uint8_t & a = at(row, col);
 	uint8_t & b = at(row, col - 1);
 
-	uint8_t temp = a;
-	a = b;
-	b = temp; 
+	std::swap(a, b);
 	
-	spaceCoordinate.col()--;
+	posOfEmptySlot.col()--;
+	;
 }
 
 void SliderBoard::slideRightFast()
 {
-	size_t col = spaceCoordinate.col();
-	size_t row = spaceCoordinate.row();
+	size_t col = posOfEmptySlot.col();
+	size_t row = posOfEmptySlot.row();
 	uint8_t & a = at(row, col);
 	uint8_t & b = at(row, col + 1);
 
-	uint8_t temp = a;
-	a = b;
-	b = temp;
+	std::swap(a, b);
 
-	spaceCoordinate.col()++;
+	posOfEmptySlot.col()++;
+	;
 }
 
 void SliderBoard::slideFast(Slide_T slide)
@@ -237,8 +270,12 @@ void SliderBoard::print(std::ostream & os) const
 		for (size_t c = 0; c < nCols; c++) {
 			os << std::setw(6) << static_cast<int>(at(r, c));
 		}
+		if (r == nRows - 1)
+			os << '\t' << posOfEmptySlot;
+
 		os << '\n';
 	}
+	
 	os << '\n';
 }
 

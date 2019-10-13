@@ -27,6 +27,19 @@ public:
 
 	void assign(const SliderBoard & board);
 
+	// The position of the empty slot (or zero slot) is maintained internally
+	// to promote efficiency is methods involving sliding and validating slides.
+	// If the position of the empty slot is inaccurate, then unexpected results
+	// may occur. 
+	void alignPositionOfEmptySlot();
+
+	// The position of the empty slot (or zero slot) is maintained internally
+	// to promote efficiency is methods involving sliding and validating slides.
+	// If the position of the empty slot is inaccurate, then unexpected results
+	// may occur. Giving an accurate hint of where the empty slot is is not 
+	// necessary but increases the speed of this method.
+	void alignPositionOfEmptySlot(const Coordinate & emptySlotPosHint);
+
 	// Returns true iff the tiles of the board are in ascending order from 
 	//	left to right, up to down with zero in the lower 
 	//	ex: 0 1 2
@@ -59,6 +72,6 @@ public:
 	SliderBoard & operator=(SliderBoard & board);
 
 protected:
-	Coordinate spaceCoordinate;
+	Coordinate posOfEmptySlot;
 };
 

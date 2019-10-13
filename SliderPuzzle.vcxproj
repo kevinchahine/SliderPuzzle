@@ -129,6 +129,7 @@
     <ClCompile Include="ChecksumDriver.cpp" />
     <ClCompile Include="ChecksumTemplate.cpp" />
     <ClCompile Include="Coordinate.cpp" />
+    <ClCompile Include="CoordinateDriver.cpp" />
     <ClCompile Include="FastSlideSequence.cpp" />
     <ClCompile Include="MatrixDriver.cpp" />
     <ClCompile Include="PatternDatabase.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="ChecksumDriver.h" />
     <ClInclude Include="ChecksumTemplate.h" />
     <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="CoordinateDriver.h" />
     <ClInclude Include="FastSlideSequence.h" />
     <ClInclude Include="MatrixArray.h" />
     <ClInclude Include="MatrixDriver.h" />
@@ -185,6 +187,7 @@
     <None Include=".gitignore" />
     <None Include="database3x3.dat" />
     <None Include="database4x4.dat" />
+    <None Include="testdatabase3x3.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

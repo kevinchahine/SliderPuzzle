@@ -4,6 +4,8 @@
 #include <iomanip>
 #include <vector>
 
+#include "Coordinate.h"
+
 template<typename T>
 class Matrix : public std::vector<T>
 {
@@ -22,6 +24,9 @@ public:
 
 	T & at(size_t row, size_t col);
 	const T & at(size_t row, size_t col) const;
+
+	T & at(const Coordinate & coordinate);
+	const T & at(const Coordinate & coordinate) const;
 
 	size_t getNRows() const;
 	size_t getNCols() const;
@@ -148,6 +153,18 @@ const T & Matrix<T>::at(size_t row, size_t col) const
 	}
 
 	return std::vector<T>::at(map(row, col));
+}
+
+template<typename T>
+inline T & Matrix<T>::at(const Coordinate & coordinate)
+{
+	return at(coordinate.col(), coordinate.row());
+}
+
+template<typename T>
+inline const T & Matrix<T>::at(const Coordinate & coordinate) const
+{
+	return at(coordinate.col(), coordinate.row());
 }
 
 template<typename T>

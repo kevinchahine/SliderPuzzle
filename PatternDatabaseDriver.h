@@ -10,10 +10,16 @@ extern std::string database4x4FileName;
 class PatternDatabaseDriver
 {
 public:
+	void testAll();
+
 	void testReadWrite3x3();
 
 	void testReadWrite4x4();
 
 	void testDistanceToSolution3x3(const PatternDatabase3x3 & database);
+
+	void generatePatternDatabase3x3();
+
+	void generatePatternDatabase4x4();
 };
 

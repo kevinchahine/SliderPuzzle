@@ -14,23 +14,9 @@ Coordinate::Coordinate(Coordinate && coord) noexcept :
 	pair<size_t, size_t>(move(coord))
 {}
 
-Coordinate & Coordinate::operator=(const Coordinate & coord)
+std::ostream & operator<<(std::ostream & os, const Coordinate & coordinate)
 {
-	static_cast<pair<size_t, size_t>>(*this) = coord;
+	os << '(' << coordinate.row() << ", " << coordinate.col() << ')';
 
-	return (*this);
-}
-
-Coordinate & Coordinate::operator=(Coordinate && coord) noexcept
-{
-	static_cast<pair<size_t, size_t>>(*this) = move(coord);
-
-	return (*this);
-}
-
-// REMOVE this
-Coordinate Coordinate::toCoordinate()
-{
-	Coordinate c(3, 4);
-	return c;
+	return os;
 }

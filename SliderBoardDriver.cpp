@@ -54,11 +54,11 @@ int SliderBoardDriver::slide()
 int SliderBoardDriver::testChecksum()
 {
 	SliderBoard board(3, 3);
+	
 	board.slideUpSafe();
 	board.slideLeftSafe();
 	board.slideLeftSafe();
 	board.slideRightSafe();
-
 	board.print();
 
 	//uint32_t checksum = board.calc32BitChecksum();
@@ -66,6 +66,12 @@ int SliderBoardDriver::testChecksum()
 
 	//SliderBoard board2(3, 3, checksum);
 	//board2.print();
+
+	board.slideDownSafe();
+	board.slideDownSafe();
+	board.slideLeftSafe();
+	board.slideUpSafe();
+	board.print();
 
 	return 0;
 }

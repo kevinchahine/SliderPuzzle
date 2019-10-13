@@ -4,17 +4,17 @@ using namespace std;
 
 void ChecksumDriver::testAll()
 {
-	testAccessors();
+	//testAccessors();
 
-	testChecksumConstructors();
+	//testChecksumConstructors();
 
 	testCalcChecksum();
 
-	testChecksums();
+	//testChecksums();
 
-	test3x3Checksum();
+	//test3x3Checksum();
 
-	test4x4Checksum();
+	//test4x4Checksum();
 }
 
 void ChecksumDriver::testAccessors()
@@ -40,20 +40,23 @@ void ChecksumDriver::testCalcChecksum()
 	SliderBoard board3x3(3, 3);
 	SliderBoard board4x4(4, 4);
 
-	board3x3.shuffle();
-	board4x4.shuffle();
+	for (size_t i = 0; i < 5; i++) {
+		board3x3.shuffle();
+		board4x4.shuffle();
 
-	board3x3.print();
-	board4x4.print();
+		cout << "These\n";
+		board3x3.print();
+		board4x4.print();
 
-	Checksum & ref3 = *(new Checksum3x3(board3x3));
-	Checksum & ref4 = *(new Checksum4x4(board4x4));
+		Checksum3x3 ref3 = (Checksum3x3(board3x3));
+		Checksum4x4 ref4 = (Checksum4x4(board4x4));
 
-	board3x3.print();
-	board4x4.print();
+		cout << "Should equal these\n";
+		board3x3.print();
+		board4x4.print();
 
-	delete &ref3;
-	delete &ref4;
+		cin.get();
+	}
 }
 
 void ChecksumDriver::testChecksumConstructors()

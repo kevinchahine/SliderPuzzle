@@ -52,5 +52,7 @@ SliderBoard Checksum4x4::toSliderBoard() const
 		tempChecksum >>= 4;
 	}
 
+	board.alignPositionOfEmptySlot();
+
 	return board;
 }

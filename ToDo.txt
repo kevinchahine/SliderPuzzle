@@ -4,6 +4,10 @@ classes:
 	- Move Assignment operator overloads
 	- Copy Assignment operator overloads
 
+class SliderBoard needs:
+	- move constructor 
+	- move assignment operator
+
 class PatternDatabase:
 	- Checksum calcChecksum();
 

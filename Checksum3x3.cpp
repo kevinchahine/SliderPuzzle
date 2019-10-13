@@ -45,6 +45,8 @@ SliderBoard Checksum3x3::toSliderBoard() const
 		board.at(i) = static_cast<uint8_t>(tempA - tempB);
 	}
 
+	board.alignPositionOfEmptySlot();
+
 	return board;
 }
 

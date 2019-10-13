@@ -28,15 +28,15 @@
     <Filter Include="Solver">
       <UniqueIdentifier>{099809fe-e9ef-459f-bffa-1b4019406498}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PatternDatabase">
+      <UniqueIdentifier>{48f922c0-3f12-46de-bff0-1fb89291a5c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MatrixDriver.cpp">
-      <Filter>TestDrivers</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderBoardDriver.cpp">
       <Filter>TestDrivers</Filter>
     </ClCompile>
     <ClCompile Include="SliderUtilityDriver.cpp">
@@ -66,32 +66,17 @@
     <ClCompile Include="SliderUtility.cpp">
       <Filter>Slider</Filter>
     </ClCompile>
-    <ClCompile Include="PatternDatabase.cpp">
-      <Filter>Solver</Filter>
-    </ClCompile>
     <ClCompile Include="SliderSolver.cpp">
-      <Filter>Solver</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternDatabaseDriver.cpp">
-      <Filter>TestDrivers</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternDatabase3x3.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="Coordinate.cpp">
       <Filter>Slider</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternDatabase4x4.cpp">
-      <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="SliderSolver3x3.cpp">
       <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="SliderSolverDriver.cpp">
       <Filter>TestDrivers</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternDatabaseGenerator.cpp">
-      <Filter>Solver</Filter>
     </ClCompile>
     <ClCompile Include="Slide.cpp">
       <Filter>Slide</Filter>
@@ -105,12 +90,30 @@
     <ClCompile Include="ChecksumDriver.cpp">
       <Filter>Checksum</Filter>
     </ClCompile>
+    <ClCompile Include="PatternDatabaseDriver.cpp">
+      <Filter>PatternDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabase.cpp">
+      <Filter>PatternDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabase3x3.cpp">
+      <Filter>PatternDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabase4x4.cpp">
+      <Filter>PatternDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDatabaseGenerator.cpp">
+      <Filter>PatternDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderBoardDriver.cpp">
+      <Filter>Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateDriver.cpp">
+      <Filter>Slider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatrixDriver.h">
-      <Filter>TestDrivers</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderBoardDriver.h">
       <Filter>TestDrivers</Filter>
     </ClInclude>
     <ClInclude Include="SliderUtilityDriver.h">
@@ -149,32 +152,17 @@
     <ClInclude Include="SliderUtility.h">
       <Filter>Slider</Filter>
     </ClInclude>
-    <ClInclude Include="PatternDatabase.h">
-      <Filter>Solver</Filter>
-    </ClInclude>
     <ClInclude Include="SliderSolver.h">
       <Filter>Solver</Filter>
     </ClInclude>
-    <ClInclude Include="PatternDatabase3x3.h">
-      <Filter>Solver</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternDatabaseDriver.h">
-      <Filter>TestDrivers</Filter>
-    </ClInclude>
     <ClInclude Include="Coordinate.h">
       <Filter>Slider</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternDatabase4x4.h">
-      <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolver3x3.h">
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolverDriver.h">
       <Filter>TestDrivers</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternDatabaseGenerator.h">
-      <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="SliderSolver4x4.h">
       <Filter>Solver</Filter>
@@ -185,6 +173,27 @@
     <ClInclude Include="ChecksumDriver.h">
       <Filter>Checksum</Filter>
     </ClInclude>
+    <ClInclude Include="PatternDatabase.h">
+      <Filter>PatternDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabase3x3.h">
+      <Filter>PatternDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabase4x4.h">
+      <Filter>PatternDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabaseGenerator.h">
+      <Filter>PatternDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDatabaseDriver.h">
+      <Filter>PatternDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderBoardDriver.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateDriver.h">
+      <Filter>Slider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AI-Solver.txt" />
@@ -194,5 +203,6 @@
     <None Include="database3x3.dat" />
     <None Include=".gitignore" />
     <None Include="database4x4.dat" />
+    <None Include="testdatabase3x3.dat" />
   </ItemGroup>
 </Project>

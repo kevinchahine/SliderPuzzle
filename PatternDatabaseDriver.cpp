@@ -2,46 +2,61 @@
 
 using namespace std;
 
+void PatternDatabaseDriver::testAll()
+{
+	cout << "===== " << __func__ << " =====\n";
+
+	testReadWrite3x3();
+
+	testReadWrite4x4();
+
+	//testDistanceToSolution3x3();
+}
+
 void PatternDatabaseDriver::testReadWrite3x3()
 {
-	//PatternDatabase3x3 database;
-	//PatternDatabase3x3 database2;
+	cout << "===== " << __func__ << " =====\n";
 
-	//ofstream outFile;
-	//ifstream inFile;
+	PatternDatabase3x3 database;
+	PatternDatabase3x3 database2;
 
-	//for (uint32_t i = 0; i < 1000000; i++) {
-	//	//database.insert(pair<Checksum3x3, uint16_t>(Checksum3x3(i), static_cast<uint16_t>(i)));
-	//}
+	ofstream outFile;
+	ifstream inFile;
 
-	//outFile.open(database3x3FileName);
-	//database.writeToFile(outFile);
+	for (uint32_t i = 0; i < 1000000; i++) {
+		database.insert(pair<Checksum3x3, uint16_t>(Checksum3x3(i), static_cast<uint16_t>(i)));
+	}
 
-	//inFile.open(database3x3FileName);
-	//database2.readFromFile(inFile);
+	outFile.open("test" + database3x3FileName);
+	database.writeToFile(outFile);
 
-	//cout << database.size() << " " << database2.size() << '\n';
+	inFile.open("test" + database3x3FileName);
+	database2.readFromFile(inFile);
+
+	cout << database.size() << " " << database2.size() << '\n';
 }
 
 void PatternDatabaseDriver::testReadWrite4x4()
 {
-	////PatternDatabase4x4 database;
-	////PatternDatabase4x4 database2;
+	cout << "===== " << __func__ << " =====\n";
 
-	//ofstream outFile;
-	//ifstream inFile;
+	PatternDatabase4x4 database;
+	PatternDatabase4x4 database2;
 
-	//for (uint32_t i = 0; i < 1000; i++) {
-	//	// TODO: UNCOMMENT database.insert(pair<Checksum4x4, uint16_t>(Checksum4x4(i), static_cast<uint16_t>(i)));
-	//}
+	ofstream outFile;
+	ifstream inFile;
 
-	//outFile.open(database4x4FileName);
-	////database.writeToFile(outFile);
+	for (uint32_t i = 0; i < 1000; i++) {
+		database.insert(pair<Checksum4x4, uint16_t>(Checksum4x4(i), static_cast<uint16_t>(i)));
+	}
 
-	//inFile.open(database4x4FileName);
-	////database2.readFromFile(inFile);
+	outFile.open(database4x4FileName);
+	database.writeToFile(outFile);
 
-	////cout << database.size() << " " << database2.size() << '\n';
+	inFile.open(database4x4FileName);
+	database2.readFromFile(inFile);
+
+	cout << database.size() << " " << database2.size() << '\n';
 }
 
 void PatternDatabaseDriver::testDistanceToSolution3x3(const PatternDatabase3x3 & database)
@@ -60,4 +75,12 @@ void PatternDatabaseDriver::testDistanceToSolution3x3(const PatternDatabase3x3 &
 	//board.print();
 
 	////cout << "Distance from solution = " << it->second << '\n';
+}
+
+void PatternDatabaseDriver::generatePatternDatabase3x3()
+{
+}
+
+void PatternDatabaseDriver::generatePatternDatabase4x4()
+{
 }
