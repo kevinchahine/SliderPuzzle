@@ -47,7 +47,7 @@ int main()
 	//s.methodPointers();
 
 	// ===== GENERATES PATTERN DATABASE 3X3 =====
-	PatternDatabase3x3 database3x3;
+	//PatternDatabase3x3 database3x3;
 	
 	//PatternDatabaseGenerator patternDatabaseGenerator;
 	//database3x3(
@@ -67,8 +67,7 @@ int main()
 	//SliderUtilityDriver::testShift64();
 
 	ChecksumDriver checksumDriver;
-	checksumDriver.test4x4Checksum();
-	checksumDriver.test3x3Checksum();
+	checksumDriver.testAll();
 	
 	//PatternDatabaseDriver patternDatabaseDriver;
 	//patternDatabaseDriver.testReadWrite3x3();

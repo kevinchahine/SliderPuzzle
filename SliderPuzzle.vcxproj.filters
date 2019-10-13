@@ -33,9 +33,6 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChecksumDriver.cpp">
-      <Filter>TestDrivers</Filter>
-    </ClCompile>
     <ClCompile Include="MatrixDriver.cpp">
       <Filter>TestDrivers</Filter>
     </ClCompile>
@@ -105,11 +102,11 @@
     <ClCompile Include="ChecksumTemplate.cpp">
       <Filter>Checksum</Filter>
     </ClCompile>
+    <ClCompile Include="ChecksumDriver.cpp">
+      <Filter>Checksum</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChecksumDriver.h">
-      <Filter>TestDrivers</Filter>
-    </ClInclude>
     <ClInclude Include="MatrixDriver.h">
       <Filter>TestDrivers</Filter>
     </ClInclude>
@@ -183,6 +180,9 @@
       <Filter>Solver</Filter>
     </ClInclude>
     <ClInclude Include="ChecksumTemplate.h">
+      <Filter>Checksum</Filter>
+    </ClInclude>
+    <ClInclude Include="ChecksumDriver.h">
       <Filter>Checksum</Filter>
     </ClInclude>
   </ItemGroup>

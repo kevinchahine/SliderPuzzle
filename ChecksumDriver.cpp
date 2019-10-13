@@ -2,6 +2,21 @@
 
 using namespace std;
 
+void ChecksumDriver::testAll()
+{
+	testAccessors();
+
+	testChecksumConstructors();
+
+	testCalcChecksum();
+
+	testChecksums();
+
+	test3x3Checksum();
+
+	test4x4Checksum();
+}
+
 void ChecksumDriver::testAccessors()
 {
 	Checksum3x3 three(333);
@@ -18,9 +33,27 @@ void ChecksumDriver::testAccessors()
 
 	cout << ref3 << '\n'
 		<< ref4 << '\n';
+}
 
-	ref3.calcChecksum(SliderBoard(3, 3));
-	ref4.calcChecksum(SliderBoard(4, 4));
+void ChecksumDriver::testCalcChecksum()
+{
+	SliderBoard board3x3(3, 3);
+	SliderBoard board4x4(4, 4);
+
+	board3x3.shuffle();
+	board4x4.shuffle();
+
+	board3x3.print();
+	board4x4.print();
+
+	Checksum & ref3 = *(new Checksum3x3(board3x3));
+	Checksum & ref4 = *(new Checksum4x4(board4x4));
+
+	board3x3.print();
+	board4x4.print();
+
+	delete &ref3;
+	delete &ref4;
 }
 
 void ChecksumDriver::testChecksumConstructors()

@@ -7,7 +7,11 @@
 class ChecksumDriver
 {
 public:
+	void testAll();
+
 	void testAccessors();
+
+	void testCalcChecksum();
 
 	void testChecksumConstructors();
 
