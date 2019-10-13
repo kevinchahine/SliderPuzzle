@@ -49,30 +49,30 @@ PatternDatabase3x3 PatternDatabaseGenerator::generate3x3PatternDatabase() const
 
 		// 3-1.) Slide Up
 		if (currentState.isSlideUpValid()) {
-			currentState.slideUpSafe();
+			currentState.slideUpFast();
 			frontier.push(pair<SliderBoard, uint16_t>(currentState, distToSol + 1));
-			currentState.slideDownSafe();
+			currentState.slideDownFast();
 		}
 		
 		// 3-2.) Slide Down
 		if (currentState.isSlideDownValid()) {
-			currentState.slideDownSafe();
+			currentState.slideDownFast();
 			frontier.push(pair<SliderBoard, uint16_t>(currentState, distToSol + 1));
-			currentState.slideUpSafe();
+			currentState.slideUpFast();
 		}
 		
 		// 3-3.) Slide Left
 		if (currentState.isSlideLeftValid()) {
-			currentState.slideLeftSafe();
+			currentState.slideLeftFast();
 			frontier.push(pair<SliderBoard, uint16_t>(currentState, distToSol + 1));
-			currentState.slideRightSafe();
+			currentState.slideRightFast();
 		}
 		
 		// 3-4.) Slide Right
 		if (currentState.isSlideRightValid()) {
-			currentState.slideRightSafe();
+			currentState.slideRightFast();
 			frontier.push(pair<SliderBoard, uint16_t>(currentState, distToSol + 1));
-			currentState.slideLeftSafe();
+			currentState.slideLeftFast();
 		}
 
 	} // end while(frontier.empty() == true)

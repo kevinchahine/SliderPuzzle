@@ -57,7 +57,7 @@ int main()
 	// ===== GENERATES PATTERN DATABASE 3X3 =====
 	PatternDatabase3x3 database3x3;
 	
-	if (true) {
+	if (false) {
 		cout << "=== Generating pattern database 3x3 ===\n";
 		cout << "...";
 
@@ -79,7 +79,7 @@ int main()
 		ofstream outFile(database3x3FileName);
 		database3x3.writeToFile(outFile);
 	}
-	if (false) {
+	if (true) {
 		// ===== READ PATTERN DATABASE 3X3 FROM FILE =====
 		cout << "=== Reading database from file ===\n";
 
@@ -106,8 +106,8 @@ int main()
 	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
 	//cout << "size = " << database.size() << '\n';
 
-	//SliderSolverDriver solverDriver;
-	//solverDriver.solve3x3(database3x3);
+	SliderSolverDriver solverDriver;
+	solverDriver.solve3x3(database3x3);
 	//solverDriver.manualHillClimb3x3(database3x3);
 	
 	cout << "Press any key...";
