@@ -56,7 +56,7 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			board.print();
 			cout << "\tDistance to solution: ";
 
-			cout << database.find(Checksum3x3(board))->second << '\n';
+			//cout << database.find(Checksum3x3(board))->second << '\n';
 
 			// -------- Analyze future moves --------
 
@@ -68,13 +68,13 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			if (board.isSlideUpValid() == true)
 			{
 				board.slideUpFast();
-				uint16_t temp = database.find(Checksum3x3(board))->second;
-				cout << temp << '\n';
+				//uint16_t temp = database.find(Checksum3x3(board))->second;
+				//cout << temp << '\n';
 
-				if (temp < minDist) {
-					minDist = temp;
-					minMove = Slide_T::UP;
-				}
+				///if (temp < minDist) {
+				///	minDist = temp;
+				///	minMove = Slide_T::UP;
+				///}
 
 				board.slideDownFast();
 			}
@@ -85,13 +85,13 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			if (board.isSlideDownValid() == true)
 			{
 				board.slideDownFast();
-				uint16_t temp = database.find(Checksum3x3(board))->second;
-				cout << temp << '\n';
+				//uint16_t temp = database.find(Checksum3x3(board))->second;
+				//cout << temp << '\n';
 
-				if (temp < minDist) {
+				/*if (temp < minDist) {
 					minDist = temp;
 					minMove = Slide_T::DOWN;
-				}
+				}*/
 
 				board.slideUpFast();
 			}
@@ -102,13 +102,13 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			if (board.isSlideLeftValid() == true)
 			{
 				board.slideLeftFast();
-				uint16_t temp = database.find(Checksum3x3(board))->second;
-				cout << temp << '\n';
+				//uint16_t temp = database.find(Checksum3x3(board))->second;
+				//cout << temp << '\n';
 				
-				if (temp < minDist) {
+				/*if (temp < minDist) {
 					minDist = temp;
 					minMove = Slide_T::LEFT;
-				}
+				}*/
 
 				board.slideRightFast();
 			}
@@ -118,14 +118,14 @@ int SliderSolverDriver::manualHillClimb3x3(const PatternDatabase3x3 & database)
 			cout << setw(7) << "RIGHT: ";
 			if (board.isSlideRightValid() == true)
 			{
-				board.slideRightFast();
+				/*board.slideRightFast();
 				uint16_t temp = database.find(Checksum3x3(board))->second;
 				cout << temp << '\n';
 
 				if (temp < minDist) {
 					minDist = temp;
 					minMove = Slide_T::RIGHT;
-				}
+				}*/
 
 				board.slideLeftFast();
 			}

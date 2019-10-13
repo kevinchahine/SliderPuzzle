@@ -10,8 +10,8 @@ public:
 	PatternDatabaseGenerator();
 	~PatternDatabaseGenerator();
 
-	PatternDatabase3x3 generate3x3PatternDatabase() const;
-	
-	PatternDatabase4x4 generate4x4PatternDatabase() const;
+	//PatternDatabase3x3 generate3x3PatternDatabase() const;
+	//
+	//PatternDatabase4x4 generate4x4PatternDatabase() const;
 };
 
