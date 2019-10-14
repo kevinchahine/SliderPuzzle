@@ -110,7 +110,5 @@ int main()
 	solverDriver.solve3x3(database3x3);
 	//solverDriver.manualHillClimb3x3(database3x3);
 	
-	cout << "Press any key...";
-	cin.get();
 	return 0;
 }

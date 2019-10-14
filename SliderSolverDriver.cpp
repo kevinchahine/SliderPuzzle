@@ -30,7 +30,7 @@ int SliderSolverDriver::solve3x3(const PatternDatabase3x3 & database)
 	cout << "puzzle is solved: Here is the solution sequence\n";
 	solutionSequence.print();
 
-	cout << "Solution size is " << solutionSequence.size() << '\n';
+	cout << "Solution size: " << solutionSequence.size() << '\n';
 	cout << "Solution time: " << setprecision(6) << (endTime - startTime) / 1000.0 << " sec\n";
 
 	return 0;
