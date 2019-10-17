@@ -54,7 +54,7 @@ int main()
 	//s.isSolved();
 	//s.methodPointers();
 
-	// ===== GENERATES PATTERN DATABASE 3X3 =====
+	// ===== GENERATES PATTERN DATABASE 3x3 =====
 	PatternDatabase3x3 database3x3;
 	
 	if (false) {
@@ -79,12 +79,45 @@ int main()
 		ofstream outFile(database3x3FileName);
 		database3x3.writeToFile(outFile);
 	}
-	if (true) {
+	if (false) {
 		// ===== READ PATTERN DATABASE 3X3 FROM FILE =====
 		cout << "=== Reading database from file ===\n";
 
 		ifstream inFile(database3x3FileName);
 		database3x3.readFromFile(inFile);
+	}
+	
+	// ===== GENERATES PATTERN DATABASE 4x4 =====
+	PatternDatabase4x4 database4x4;
+	if (true) {
+		cout << "=== Generating pattern database 4x4 ===\n";
+		
+		startTime = clock();
+
+		PatternDatabaseGenerator patternDatabaseGenerator;
+		database4x4 =
+			patternDatabaseGenerator.generate4x4PatternDatabase(20);
+
+		endTime = clock();
+
+		cout << "done\tgenerated " << database4x4.size()
+			<< " in " << (endTime - startTime) / 1000.0
+			<< " sec\n";
+
+		// ===== WRITE PATTERN DATABASE 4x4 TO FILE =====
+		cout << "=== Writting database to file ===\n";
+
+		ofstream outFile(database4x4FileName);
+		cout << "\tWritting to " << database4x4FileName;
+		database4x4.writeToFile(outFile);
+		cout << "done\n";
+	}
+	if (false) {
+		// ===== READ PATTERN DATABASE 4X4 FROM FILE =====
+		cout << "=== Reading database from file ===\n";
+
+		ifstream inFile(database4x4FileName);
+		database4x4.readFromFile(inFile);
 	}
 
 	//SliderBoard slider;
@@ -102,13 +135,10 @@ int main()
 	//patternDatabaseDriver.testReadWrite4x4();
 	//patternDatabaseDriver.testDistanceToSolution3x3(database3x3);
 
-	//PatternDatabaseGenerator patternGenerator;
-	//PatternDatabase3x3 database = patternGenerator.generate3x3PatternDatabase();
-	//cout << "size = " << database.size() << '\n';
-
-	SliderSolverDriver solverDriver;
-	solverDriver.solve3x3(database3x3);
+	//SliderSolverDriver solverDriver;
+	//solverDriver.solve3x3(database3x3);
 	//solverDriver.manualHillClimb3x3(database3x3);
 	
+	cin.get();
 	return 0;
 }
